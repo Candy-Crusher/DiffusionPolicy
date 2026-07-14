@@ -128,6 +128,21 @@
       margin: 3px 0 0;
       color: var(--muted);
     }
+    .prompt {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    code {
+      color: var(--ink);
+      background: #eef2f7;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 2px 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 0.92em;
+    }
     .score {
       min-width: 92px;
       text-align: right;
@@ -209,6 +224,7 @@
       <thead>
         <tr>
           <th>Task</th>
+          <th>Task Prompt</th>
           <th>Action Mode</th>
           <th>Episode Seeds</th>
           <th>Success</th>
@@ -219,6 +235,7 @@
         
         <tr>
           <td><a href="#place_cups">Place Cups</a></td>
+          <td><code>place cups</code></td>
           <td>absolute</td>
           <td>930000-930009</td>
           <td>0/10</td>
@@ -227,6 +244,7 @@
 
         <tr>
           <td><a href="#place_shape_in_shape_sorter">Place Shape In Shape Sorter</a></td>
+          <td><code>place shape in shape sorter</code></td>
           <td>absolute</td>
           <td>930000-930009</td>
           <td>0/10</td>
@@ -235,6 +253,7 @@
 
         <tr>
           <td><a href="#stack_blocks">Stack Blocks</a></td>
+          <td><code>stack blocks</code></td>
           <td>absolute</td>
           <td>930000-930009</td>
           <td>0/10</td>
@@ -243,6 +262,7 @@
 
         <tr>
           <td><a href="#stack_cups">Stack Cups</a></td>
+          <td><code>stack cups</code></td>
           <td>absolute</td>
           <td>930000-930009</td>
           <td>0/10</td>
@@ -256,6 +276,7 @@
                 <div>
                   <h2>Place Cups</h2>
                   <p>place_cups · absolute action · seed base 930000</p>
+                  <p class="prompt"><b>Task prompt</b><code>place cups</code></p>
                 </div>
                 <div class="score">0/10<span>0.0%</span></div>
               </div>
@@ -342,6 +363,7 @@
                 <div>
                   <h2>Place Shape In Shape Sorter</h2>
                   <p>place_shape_in_shape_sorter · absolute action · seed base 930000</p>
+                  <p class="prompt"><b>Task prompt</b><code>place shape in shape sorter</code></p>
                 </div>
                 <div class="score">0/10<span>0.0%</span></div>
               </div>
@@ -428,6 +450,7 @@
                 <div>
                   <h2>Stack Blocks</h2>
                   <p>stack_blocks · absolute action · seed base 930000</p>
+                  <p class="prompt"><b>Task prompt</b><code>stack blocks</code></p>
                 </div>
                 <div class="score">0/10<span>0.0%</span></div>
               </div>
@@ -514,6 +537,7 @@
                 <div>
                   <h2>Stack Cups</h2>
                   <p>stack_cups · absolute action · seed base 930000</p>
+                  <p class="prompt"><b>Task prompt</b><code>stack cups</code></p>
                 </div>
                 <div class="score">0/10<span>0.0%</span></div>
               </div>

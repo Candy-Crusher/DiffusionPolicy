@@ -44,6 +44,8 @@
     .task-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; padding: 10px 0; }
     h2 { margin: 0; font-size: 24px; letter-spacing: 0; }
     .task p { margin: 3px 0 0; color: var(--muted); }
+    .prompt { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    code { color: var(--ink); background: #eef4f2; border: 1px solid var(--line); border-radius: 6px; padding: 2px 6px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size: 0.92em; }
     .score { min-width: 92px; text-align: right; font-size: 28px; font-weight: 750; }
     .score span { display: block; color: var(--muted); font-size: 13px; }
     .links { display: flex; gap: 14px; margin-bottom: 10px; font-size: 14px; }
@@ -65,7 +67,7 @@
       <h1>LingBot-VA RLBench Closed-Loop Report</h1>
       <p class="subhead">Closed-loop RLBench evaluation for per-task LingBot-VA models. The page tracks completed RGB + Action and RGB + Depth + Flow + Action inference runs and keeps in-progress runs visible.</p>
       <div class="stats">
-        <div class="stat"><b>7</b><span>completed runs</span></div>
+        <div class="stat"><b>8</b><span>completed runs</span></div>
         <div class="stat"><b>4</b><span>in-progress runs</span></div>
         <div class="stat"><b>0/50</b><span>latest completed successes</span></div>
         <div class="stat"><b>0.0%</b><span>latest completed rate</span></div>
@@ -74,11 +76,12 @@
   </header>
   <main class="wrap">
     <table>
-      <thead><tr><th>Variant</th><th>Task</th><th>Step</th><th>Status</th><th>Success</th><th>Rate</th></tr></thead>
+      <thead><tr><th>Variant</th><th>Task</th><th>Task Prompt</th><th>Step</th><th>Status</th><th>Success</th><th>Rate</th></tr></thead>
       <tbody>
             <tr>
               <td>RGB + Action</td>
               <td>Place Cups</td>
+              <td><code>place cups</code></td>
               <td>3200</td>
               <td><span class="complete">complete</span></td>
               <td>0/10</td>
@@ -87,6 +90,7 @@
             <tr>
               <td>RGB + Depth + Flow + Action</td>
               <td>Place Cups</td>
+              <td><code>place cups</code></td>
               <td>100</td>
               <td><span class="complete">complete</span></td>
               <td>0/10</td>
@@ -95,6 +99,7 @@
             <tr>
               <td>RGB + Depth + Flow + Action</td>
               <td>Place Cups</td>
+              <td><code>place cups</code></td>
               <td>200</td>
               <td><span class="in-progress">in progress</span></td>
               <td>running</td>
@@ -103,6 +108,7 @@
             <tr>
               <td>RGB + Action</td>
               <td>Place Shape In Shape Sorter</td>
+              <td><code>place shape in shape sorter</code></td>
               <td>100</td>
               <td><span class="complete">complete</span></td>
               <td>0/10</td>
@@ -111,6 +117,7 @@
             <tr>
               <td>RGB + Action</td>
               <td>Place Shape In Shape Sorter</td>
+              <td><code>place shape in shape sorter</code></td>
               <td>200</td>
               <td><span class="complete">complete</span></td>
               <td>0/10</td>
@@ -119,14 +126,16 @@
             <tr>
               <td>RGB + Action</td>
               <td>Place Shape In Shape Sorter</td>
+              <td><code>place shape in shape sorter</code></td>
               <td>300</td>
-              <td><span class="in-progress">in progress</span></td>
-              <td>running</td>
-              <td>running</td>
+              <td><span class="complete">complete</span></td>
+              <td>0/10</td>
+              <td>0.0%</td>
             </tr>
             <tr>
               <td>RGB + Depth + Flow + Action</td>
               <td>Place Shape In Shape Sorter</td>
+              <td><code>place shape in shape sorter</code></td>
               <td>100</td>
               <td><span class="in-progress">in progress</span></td>
               <td>running</td>
@@ -135,6 +144,7 @@
             <tr>
               <td>RGB + Action</td>
               <td>Stack Blocks</td>
+              <td><code>stack blocks</code></td>
               <td>100</td>
               <td><span class="complete">complete</span></td>
               <td>0/10</td>
@@ -143,6 +153,7 @@
             <tr>
               <td>RGB + Action</td>
               <td>Stack Cups</td>
+              <td><code>stack cups</code></td>
               <td>100</td>
               <td><span class="complete">complete</span></td>
               <td>0/10</td>
@@ -151,14 +162,25 @@
             <tr>
               <td>RGB + Action</td>
               <td>Stack Cups</td>
+              <td><code>stack cups</code></td>
               <td>200</td>
               <td><span class="complete">complete</span></td>
               <td>0/10</td>
               <td>0.0%</td>
             </tr>
             <tr>
+              <td>RGB + Action</td>
+              <td>Stack Cups</td>
+              <td><code>stack cups</code></td>
+              <td>300</td>
+              <td><span class="in-progress">in progress</span></td>
+              <td>running</td>
+              <td>running</td>
+            </tr>
+            <tr>
               <td>RGB + Depth + Flow + Action</td>
               <td>Stack Cups</td>
+              <td><code>stack cups</code></td>
               <td>100</td>
               <td><span class="in-progress">in progress</span></td>
               <td>running</td>
@@ -171,6 +193,7 @@
                 <div>
                   <h2>Place Cups</h2>
                   <p>RGB + Action · step 3200 · seed base 930000</p>
+                  <p class="prompt"><b>Task prompt</b><code>place cups</code></p>
                 </div>
                 <div class="score">0/10<span>0.0%</span></div>
               </div>
@@ -224,54 +247,55 @@
               <div class="task-head">
                 <div>
                   <h2>Place Shape In Shape Sorter</h2>
-                  <p>RGB + Action · step 200 · seed base 930000</p>
+                  <p>RGB + Action · step 300 · seed base 930000</p>
+                  <p class="prompt"><b>Task prompt</b><code>place shape in shape sorter</code></p>
                 </div>
                 <div class="score">0/10<span>0.0%</span></div>
               </div>
               <div class="links">
-                <a href="assets/rgb_action_2g/place_shape_in_shape_sorter/step_200/sweep_summary.json">summary json</a>
-                <a href="assets/rgb_action_2g/place_shape_in_shape_sorter/step_200/metrics.json">metrics json</a>
+                <a href="assets/rgb_action_2g/place_shape_in_shape_sorter/step_300/sweep_summary.json">summary json</a>
+                <a href="assets/rgb_action_2g/place_shape_in_shape_sorter/step_300/metrics.json">metrics json</a>
               </div>
               <div class="episodes">
                 <article class="episode">
                   <div class="episode-meta"><span>Episode 00</span><span>failure</span></div>
-                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_200/episode_0000_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_300/episode_0000_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
                 </article>
                 <article class="episode">
                   <div class="episode-meta"><span>Episode 01</span><span>failure</span></div>
-                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_200/episode_0001_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_300/episode_0001_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
                 </article>
                 <article class="episode">
                   <div class="episode-meta"><span>Episode 02</span><span>failure</span></div>
-                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_200/episode_0002_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_300/episode_0002_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
                 </article>
                 <article class="episode">
                   <div class="episode-meta"><span>Episode 03</span><span>failure</span></div>
-                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_200/episode_0003_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_300/episode_0003_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
                 </article>
                 <article class="episode">
                   <div class="episode-meta"><span>Episode 04</span><span>failure</span></div>
-                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_200/episode_0004_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_300/episode_0004_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
                 </article>
                 <article class="episode">
                   <div class="episode-meta"><span>Episode 05</span><span>failure</span></div>
-                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_200/episode_0005_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_300/episode_0005_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
                 </article>
                 <article class="episode">
                   <div class="episode-meta"><span>Episode 06</span><span>failure</span></div>
-                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_200/episode_0006_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_300/episode_0006_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
                 </article>
                 <article class="episode">
                   <div class="episode-meta"><span>Episode 07</span><span>failure</span></div>
-                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_200/episode_0007_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_300/episode_0007_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
                 </article>
                 <article class="episode">
                   <div class="episode-meta"><span>Episode 08</span><span>failure</span></div>
-                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_200/episode_0008_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_300/episode_0008_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
                 </article>
                 <article class="episode">
                   <div class="episode-meta"><span>Episode 09</span><span>failure</span></div>
-                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_200/episode_0009_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_300/episode_0009_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
                 </article></div>
             </section>
             <section class="task" id="rgb_action_2g-stack_blocks">
@@ -279,6 +303,7 @@
                 <div>
                   <h2>Stack Blocks</h2>
                   <p>RGB + Action · step 100 · seed base 930000</p>
+                  <p class="prompt"><b>Task prompt</b><code>stack blocks</code></p>
                 </div>
                 <div class="score">0/10<span>0.0%</span></div>
               </div>
@@ -333,6 +358,7 @@
                 <div>
                   <h2>Stack Cups</h2>
                   <p>RGB + Action · step 200 · seed base 930000</p>
+                  <p class="prompt"><b>Task prompt</b><code>stack cups</code></p>
                 </div>
                 <div class="score">0/10<span>0.0%</span></div>
               </div>
@@ -387,6 +413,7 @@
                 <div>
                   <h2>Place Cups</h2>
                   <p>RGB + Depth + Flow + Action · step 100 · seed base 930000</p>
+                  <p class="prompt"><b>Task prompt</b><code>place cups</code></p>
                 </div>
                 <div class="score">0/10<span>0.0%</span></div>
               </div>
