@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diffusion Policy RLBench Closed-Loop Report</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17202a;
+      --muted: #5a6675;
+      --line: #d8dee8;
+      --paper: #f6f8fb;
+      --panel: #ffffff;
+      --accent: #1967d2;
+      --bad: #b42318;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.5;
+    }
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+    }
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+    .hero {
+      padding: 30px 0 22px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    .subhead {
+      max-width: 860px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 20px 0 0;
+    }
+    .stat {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .stat b {
+      display: block;
+      font-size: 28px;
+      line-height: 1.1;
+    }
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    main {
+      padding: 22px 0 42px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 11px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      font-size: 14px;
+    }
+    th {
+      color: var(--muted);
+      font-weight: 650;
+      background: #eef3f9;
+    }
+    tr:last-child td { border-bottom: 0; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .task {
+      margin-top: 22px;
+      padding-top: 6px;
+    }
+    .task-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 0;
+    }
+    h2 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: 0;
+    }
+    .task p {
+      margin: 3px 0 0;
+      color: var(--muted);
+    }
+    .score {
+      min-width: 92px;
+      text-align: right;
+      font-size: 28px;
+      font-weight: 750;
+    }
+    .score span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .links {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    .episodes {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 12px;
+    }
+    .episode {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .episode-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 10px;
+      font-size: 13px;
+      color: var(--muted);
+      border-bottom: 1px solid var(--line);
+    }
+    .fail {
+      color: var(--bad);
+      font-weight: 700;
+    }
+    video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: #101418;
+    }
+    footer {
+      color: var(--muted);
+      font-size: 13px;
+      padding: 18px 0 34px;
+    }
+    @media (max-width: 760px) {
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .task-head { align-items: start; }
+      th:nth-child(2), td:nth-child(2), th:nth-child(3), td:nth-child(3) { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <h1>Diffusion Policy RLBench Closed-Loop Report</h1>
+      <p class="subhead">Absolute-action Diffusion Policy evaluation on four RLBench tasks. Each task was evaluated with 10 closed-loop simulator episodes using seed base 930000.</p>
+      <div class="stats">
+        <div class="stat"><b>0/40</b><span>overall successes</span></div>
+        <div class="stat"><b>0.0%</b><span>overall success rate</span></div>
+        <div class="stat"><b>4</b><span>tasks</span></div>
+        <div class="stat"><b>40</b><span>saved obs videos</span></div>
+      </div>
+    </div>
+  </header>
+  <main class="wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>Action Mode</th>
+          <th>Episode Seeds</th>
+          <th>Success</th>
+          <th>Rate</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td><a href="#place_cups">Place Cups</a></td>
+          <td>absolute</td>
+          <td>930000-930009</td>
+          <td>0/10</td>
+          <td>0.0%</td>
+        </tr>
+
+        <tr>
+          <td><a href="#place_shape_in_shape_sorter">Place Shape In Shape Sorter</a></td>
+          <td>absolute</td>
+          <td>930000-930009</td>
+          <td>0/10</td>
+          <td>0.0%</td>
+        </tr>
+
+        <tr>
+          <td><a href="#stack_blocks">Stack Blocks</a></td>
+          <td>absolute</td>
+          <td>930000-930009</td>
+          <td>0/10</td>
+          <td>0.0%</td>
+        </tr>
+
+        <tr>
+          <td><a href="#stack_cups">Stack Cups</a></td>
+          <td>absolute</td>
+          <td>930000-930009</td>
+          <td>0/10</td>
+          <td>0.0%</td>
+        </tr>
+      </tbody>
+    </table>
+    
+            <section class="task" id="place_cups">
+              <div class="task-head">
+                <div>
+                  <h2>Place Cups</h2>
+                  <p>place_cups · absolute action · seed base 930000</p>
+                </div>
+                <div class="score">0/10<span>0.0%</span></div>
+              </div>
+              <div class="links">
+                <a href="assets/place_cups/sweep_summary.json">summary json</a>
+                <a href="assets/place_cups/metrics.json">metrics json</a>
+              </div>
+              <div class="episodes">
+                
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 00</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/place_cups/episode_0000_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 01</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/place_cups/episode_0001_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 02</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/place_cups/episode_0002_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 03</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/place_cups/episode_0003_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 04</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/place_cups/episode_0004_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 05</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/place_cups/episode_0005_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 06</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/place_cups/episode_0006_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 07</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/place_cups/episode_0007_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 08</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/place_cups/episode_0008_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 09</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/place_cups/episode_0009_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+              </div>
+            </section>
+            <section class="task" id="place_shape_in_shape_sorter">
+              <div class="task-head">
+                <div>
+                  <h2>Place Shape In Shape Sorter</h2>
+                  <p>place_shape_in_shape_sorter · absolute action · seed base 930000</p>
+                </div>
+                <div class="score">0/10<span>0.0%</span></div>
+              </div>
+              <div class="links">
+                <a href="assets/place_shape_in_shape_sorter/sweep_summary.json">summary json</a>
+                <a href="assets/place_shape_in_shape_sorter/metrics.json">metrics json</a>
+              </div>
+              <div class="episodes">
+                
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 00</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/place_shape_in_shape_sorter/episode_0000_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 01</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/place_shape_in_shape_sorter/episode_0001_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 02</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/place_shape_in_shape_sorter/episode_0002_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 03</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/place_shape_in_shape_sorter/episode_0003_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 04</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/place_shape_in_shape_sorter/episode_0004_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 05</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/place_shape_in_shape_sorter/episode_0005_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 06</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/place_shape_in_shape_sorter/episode_0006_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 07</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/place_shape_in_shape_sorter/episode_0007_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 08</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/place_shape_in_shape_sorter/episode_0008_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 09</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/place_shape_in_shape_sorter/episode_0009_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+              </div>
+            </section>
+            <section class="task" id="stack_blocks">
+              <div class="task-head">
+                <div>
+                  <h2>Stack Blocks</h2>
+                  <p>stack_blocks · absolute action · seed base 930000</p>
+                </div>
+                <div class="score">0/10<span>0.0%</span></div>
+              </div>
+              <div class="links">
+                <a href="assets/stack_blocks/sweep_summary.json">summary json</a>
+                <a href="assets/stack_blocks/metrics.json">metrics json</a>
+              </div>
+              <div class="episodes">
+                
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 00</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/stack_blocks/episode_0000_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 01</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/stack_blocks/episode_0001_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 02</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/stack_blocks/episode_0002_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 03</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/stack_blocks/episode_0003_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 04</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/stack_blocks/episode_0004_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 05</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/stack_blocks/episode_0005_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 06</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/stack_blocks/episode_0006_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 07</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/stack_blocks/episode_0007_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 08</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/stack_blocks/episode_0008_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 09</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/stack_blocks/episode_0009_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+              </div>
+            </section>
+            <section class="task" id="stack_cups">
+              <div class="task-head">
+                <div>
+                  <h2>Stack Cups</h2>
+                  <p>stack_cups · absolute action · seed base 930000</p>
+                </div>
+                <div class="score">0/10<span>0.0%</span></div>
+              </div>
+              <div class="links">
+                <a href="assets/stack_cups/sweep_summary.json">summary json</a>
+                <a href="assets/stack_cups/metrics.json">metrics json</a>
+              </div>
+              <div class="episodes">
+                
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 00</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/stack_cups/episode_0000_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 01</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/stack_cups/episode_0001_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 02</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/stack_cups/episode_0002_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 03</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/stack_cups/episode_0003_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 04</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/stack_cups/episode_0004_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 05</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/stack_cups/episode_0005_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 06</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/stack_cups/episode_0006_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 07</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/stack_cups/episode_0007_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 08</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/stack_cups/episode_0008_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta">
+                    <span>Episode 09</span>
+                    <span class="fail">failure</span>
+                  </div>
+                  <video src="assets/stack_cups/episode_0009_final_success-false_obs.mp4" controls preload="metadata"></video>
+                </article>
+              </div>
+            </section>
+  </main>
+  <footer class="wrap">Generated from <code>results/rlbench_comparison_closed_loop/diffusion_policy_absolute_*</code>.</footer>
+</body>
+</html>
