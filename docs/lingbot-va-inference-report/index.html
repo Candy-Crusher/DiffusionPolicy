@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LingBot-VA RLBench Closed-Loop Report</title>
+  <style>
+    :root {
+      --ink: #18212d;
+      --muted: #617083;
+      --line: #d7dee8;
+      --paper: #f7f8fb;
+      --panel: #ffffff;
+      --accent: #0f6b5f;
+      --warn: #9a5b00;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+    header { background: #fff; border-bottom: 1px solid var(--line); }
+    .wrap { width: min(1200px, calc(100% - 32px)); margin: 0 auto; }
+    .hero { padding: 30px 0 22px; }
+    h1 { margin: 0 0 8px; font-size: clamp(28px, 4vw, 46px); line-height: 1.05; letter-spacing: 0; }
+    .subhead { margin: 0; color: var(--muted); max-width: 880px; }
+    .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
+    .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px; }
+    .stat b { display: block; font-size: 28px; line-height: 1.1; }
+    .stat span { color: var(--muted); font-size: 13px; }
+    main { padding: 22px 0 42px; }
+    table { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    th, td { padding: 11px 12px; border-bottom: 1px solid var(--line); text-align: left; font-size: 14px; }
+    th { color: var(--muted); background: #edf3f1; font-weight: 650; }
+    tr:last-child td { border-bottom: 0; }
+    .complete { color: var(--accent); font-weight: 750; }
+    .in-progress { color: var(--warn); font-weight: 750; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .task { margin-top: 24px; padding-top: 4px; }
+    .task-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; padding: 10px 0; }
+    h2 { margin: 0; font-size: 24px; letter-spacing: 0; }
+    .task p { margin: 3px 0 0; color: var(--muted); }
+    .score { min-width: 92px; text-align: right; font-size: 28px; font-weight: 750; }
+    .score span { display: block; color: var(--muted); font-size: 13px; }
+    .links { display: flex; gap: 14px; margin-bottom: 10px; font-size: 14px; }
+    .episodes { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+    .episode { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .episode-meta { display: flex; justify-content: space-between; padding: 8px 10px; color: var(--muted); font-size: 13px; border-bottom: 1px solid var(--line); }
+    video { display: block; width: 100%; aspect-ratio: 2 / 1; background: #111820; }
+    footer { color: var(--muted); font-size: 13px; padding: 18px 0 34px; }
+    @media (max-width: 760px) {
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .task-head { align-items: start; }
+      th:nth-child(3), td:nth-child(3), th:nth-child(4), td:nth-child(4) { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <h1>LingBot-VA RLBench Closed-Loop Report</h1>
+      <p class="subhead">Closed-loop RLBench evaluation for per-task LingBot-VA models. The page tracks completed RGB + Action and RGB + Depth + Flow + Action inference runs and keeps in-progress runs visible.</p>
+      <div class="stats">
+        <div class="stat"><b>7</b><span>completed runs</span></div>
+        <div class="stat"><b>4</b><span>in-progress runs</span></div>
+        <div class="stat"><b>0/50</b><span>latest completed successes</span></div>
+        <div class="stat"><b>0.0%</b><span>latest completed rate</span></div>
+      </div>
+    </div>
+  </header>
+  <main class="wrap">
+    <table>
+      <thead><tr><th>Variant</th><th>Task</th><th>Step</th><th>Status</th><th>Success</th><th>Rate</th></tr></thead>
+      <tbody>
+            <tr>
+              <td>RGB + Action</td>
+              <td>Place Cups</td>
+              <td>3200</td>
+              <td><span class="complete">complete</span></td>
+              <td>0/10</td>
+              <td>0.0%</td>
+            </tr>
+            <tr>
+              <td>RGB + Depth + Flow + Action</td>
+              <td>Place Cups</td>
+              <td>100</td>
+              <td><span class="complete">complete</span></td>
+              <td>0/10</td>
+              <td>0.0%</td>
+            </tr>
+            <tr>
+              <td>RGB + Depth + Flow + Action</td>
+              <td>Place Cups</td>
+              <td>200</td>
+              <td><span class="in-progress">in progress</span></td>
+              <td>running</td>
+              <td>running</td>
+            </tr>
+            <tr>
+              <td>RGB + Action</td>
+              <td>Place Shape In Shape Sorter</td>
+              <td>100</td>
+              <td><span class="complete">complete</span></td>
+              <td>0/10</td>
+              <td>0.0%</td>
+            </tr>
+            <tr>
+              <td>RGB + Action</td>
+              <td>Place Shape In Shape Sorter</td>
+              <td>200</td>
+              <td><span class="complete">complete</span></td>
+              <td>0/10</td>
+              <td>0.0%</td>
+            </tr>
+            <tr>
+              <td>RGB + Action</td>
+              <td>Place Shape In Shape Sorter</td>
+              <td>300</td>
+              <td><span class="in-progress">in progress</span></td>
+              <td>running</td>
+              <td>running</td>
+            </tr>
+            <tr>
+              <td>RGB + Depth + Flow + Action</td>
+              <td>Place Shape In Shape Sorter</td>
+              <td>100</td>
+              <td><span class="in-progress">in progress</span></td>
+              <td>running</td>
+              <td>running</td>
+            </tr>
+            <tr>
+              <td>RGB + Action</td>
+              <td>Stack Blocks</td>
+              <td>100</td>
+              <td><span class="complete">complete</span></td>
+              <td>0/10</td>
+              <td>0.0%</td>
+            </tr>
+            <tr>
+              <td>RGB + Action</td>
+              <td>Stack Cups</td>
+              <td>100</td>
+              <td><span class="complete">complete</span></td>
+              <td>0/10</td>
+              <td>0.0%</td>
+            </tr>
+            <tr>
+              <td>RGB + Action</td>
+              <td>Stack Cups</td>
+              <td>200</td>
+              <td><span class="complete">complete</span></td>
+              <td>0/10</td>
+              <td>0.0%</td>
+            </tr>
+            <tr>
+              <td>RGB + Depth + Flow + Action</td>
+              <td>Stack Cups</td>
+              <td>100</td>
+              <td><span class="in-progress">in progress</span></td>
+              <td>running</td>
+              <td>running</td>
+            </tr></tbody>
+    </table>
+    
+            <section class="task" id="rgb_action_2g-place_cups">
+              <div class="task-head">
+                <div>
+                  <h2>Place Cups</h2>
+                  <p>RGB + Action · step 3200 · seed base 930000</p>
+                </div>
+                <div class="score">0/10<span>0.0%</span></div>
+              </div>
+              <div class="links">
+                <a href="assets/rgb_action_2g/place_cups/step_3200/sweep_summary.json">summary json</a>
+                <a href="assets/rgb_action_2g/place_cups/step_3200/metrics.json">metrics json</a>
+              </div>
+              <div class="episodes">
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 00</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/place_cups/step_3200/episode_0000_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 01</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/place_cups/step_3200/episode_0001_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 02</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/place_cups/step_3200/episode_0002_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 03</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/place_cups/step_3200/episode_0003_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 04</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/place_cups/step_3200/episode_0004_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 05</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/place_cups/step_3200/episode_0005_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 06</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/place_cups/step_3200/episode_0006_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 07</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/place_cups/step_3200/episode_0007_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 08</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/place_cups/step_3200/episode_0008_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 09</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/place_cups/step_3200/episode_0009_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article></div>
+            </section>
+            <section class="task" id="rgb_action_2g-place_shape_in_shape_sorter">
+              <div class="task-head">
+                <div>
+                  <h2>Place Shape In Shape Sorter</h2>
+                  <p>RGB + Action · step 200 · seed base 930000</p>
+                </div>
+                <div class="score">0/10<span>0.0%</span></div>
+              </div>
+              <div class="links">
+                <a href="assets/rgb_action_2g/place_shape_in_shape_sorter/step_200/sweep_summary.json">summary json</a>
+                <a href="assets/rgb_action_2g/place_shape_in_shape_sorter/step_200/metrics.json">metrics json</a>
+              </div>
+              <div class="episodes">
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 00</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_200/episode_0000_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 01</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_200/episode_0001_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 02</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_200/episode_0002_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 03</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_200/episode_0003_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 04</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_200/episode_0004_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 05</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_200/episode_0005_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 06</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_200/episode_0006_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 07</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_200/episode_0007_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 08</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_200/episode_0008_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 09</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/place_shape_in_shape_sorter/step_200/episode_0009_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article></div>
+            </section>
+            <section class="task" id="rgb_action_2g-stack_blocks">
+              <div class="task-head">
+                <div>
+                  <h2>Stack Blocks</h2>
+                  <p>RGB + Action · step 100 · seed base 930000</p>
+                </div>
+                <div class="score">0/10<span>0.0%</span></div>
+              </div>
+              <div class="links">
+                <a href="assets/rgb_action_2g/stack_blocks/step_100/sweep_summary.json">summary json</a>
+                <a href="assets/rgb_action_2g/stack_blocks/step_100/metrics.json">metrics json</a>
+              </div>
+              <div class="episodes">
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 00</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/stack_blocks/step_100/episode_0000_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 01</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/stack_blocks/step_100/episode_0001_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 02</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/stack_blocks/step_100/episode_0002_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 03</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/stack_blocks/step_100/episode_0003_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 04</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/stack_blocks/step_100/episode_0004_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 05</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/stack_blocks/step_100/episode_0005_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 06</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/stack_blocks/step_100/episode_0006_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 07</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/stack_blocks/step_100/episode_0007_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 08</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/stack_blocks/step_100/episode_0008_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 09</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/stack_blocks/step_100/episode_0009_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article></div>
+            </section>
+            <section class="task" id="rgb_action_2g-stack_cups">
+              <div class="task-head">
+                <div>
+                  <h2>Stack Cups</h2>
+                  <p>RGB + Action · step 200 · seed base 930000</p>
+                </div>
+                <div class="score">0/10<span>0.0%</span></div>
+              </div>
+              <div class="links">
+                <a href="assets/rgb_action_2g/stack_cups/step_200/sweep_summary.json">summary json</a>
+                <a href="assets/rgb_action_2g/stack_cups/step_200/metrics.json">metrics json</a>
+              </div>
+              <div class="episodes">
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 00</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/stack_cups/step_200/episode_0000_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 01</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/stack_cups/step_200/episode_0001_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 02</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/stack_cups/step_200/episode_0002_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 03</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/stack_cups/step_200/episode_0003_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 04</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/stack_cups/step_200/episode_0004_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 05</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/stack_cups/step_200/episode_0005_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 06</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/stack_cups/step_200/episode_0006_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 07</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/stack_cups/step_200/episode_0007_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 08</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/stack_cups/step_200/episode_0008_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 09</span><span>failure</span></div>
+                  <video src="assets/rgb_action_2g/stack_cups/step_200/episode_0009_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article></div>
+            </section>
+            <section class="task" id="rgb_depth_flow_action_2g-place_cups">
+              <div class="task-head">
+                <div>
+                  <h2>Place Cups</h2>
+                  <p>RGB + Depth + Flow + Action · step 100 · seed base 930000</p>
+                </div>
+                <div class="score">0/10<span>0.0%</span></div>
+              </div>
+              <div class="links">
+                <a href="assets/rgb_depth_flow_action_2g/place_cups/step_100/sweep_summary.json">summary json</a>
+                <a href="assets/rgb_depth_flow_action_2g/place_cups/step_100/metrics.json">metrics json</a>
+              </div>
+              <div class="episodes">
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 00</span><span>failure</span></div>
+                  <video src="assets/rgb_depth_flow_action_2g/place_cups/step_100/episode_0000_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 01</span><span>failure</span></div>
+                  <video src="assets/rgb_depth_flow_action_2g/place_cups/step_100/episode_0001_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 02</span><span>failure</span></div>
+                  <video src="assets/rgb_depth_flow_action_2g/place_cups/step_100/episode_0002_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 03</span><span>failure</span></div>
+                  <video src="assets/rgb_depth_flow_action_2g/place_cups/step_100/episode_0003_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 04</span><span>failure</span></div>
+                  <video src="assets/rgb_depth_flow_action_2g/place_cups/step_100/episode_0004_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 05</span><span>failure</span></div>
+                  <video src="assets/rgb_depth_flow_action_2g/place_cups/step_100/episode_0005_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 06</span><span>failure</span></div>
+                  <video src="assets/rgb_depth_flow_action_2g/place_cups/step_100/episode_0006_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 07</span><span>failure</span></div>
+                  <video src="assets/rgb_depth_flow_action_2g/place_cups/step_100/episode_0007_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 08</span><span>failure</span></div>
+                  <video src="assets/rgb_depth_flow_action_2g/place_cups/step_100/episode_0008_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article>
+                <article class="episode">
+                  <div class="episode-meta"><span>Episode 09</span><span>failure</span></div>
+                  <video src="assets/rgb_depth_flow_action_2g/place_cups/step_100/episode_0009_final_success-false_all_compare_keyframes.mp4" controls preload="metadata"></video>
+                </article></div>
+            </section>
+  </main>
+  <footer class="wrap">Generated from <code>results/rlbench_comparison_closed_loop/rlbench_*_rgb*_action_2g</code>.</footer>
+</body>
+</html>
