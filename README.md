@@ -2,6 +2,13 @@
 
 Static reports for RLBench closed-loop inference experiments.
 
+## Unified Dashboard
+
+- Report: [docs/rlbench-comparison-dashboard/index.html](docs/rlbench-comparison-dashboard/index.html)
+- Models: DP, DP3, LingBot RGB, Rynn, LingBot RGB-Depth-Flow-Action
+- Controls: model buttons, task dropdown, step dropdown
+- Missing models/runs are kept visible as empty states so new results can be added without changing the UI.
+
 ## Diffusion Policy
 
 - Report: [docs/dp-inference-report/index.html](docs/dp-inference-report/index.html)
