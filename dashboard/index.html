@@ -114,14 +114,14 @@
       <label>Task
         <select id="taskSelect"></select>
       </label>
-      <label>Step
+      <label>Checkpoint / Eval Step
         <select id="stepSelect"></select>
       </label>
     </section>
     <section class="summary" id="summary"></section>
     <section class="panel" id="runPanel"></section>
     <table>
-      <thead><tr><th>Model</th><th>Task</th><th>Prompt</th><th>Step</th><th>Status</th><th>Success</th><th>Rate</th></tr></thead>
+      <thead><tr><th>Model</th><th>Task</th><th>Prompt</th><th>Checkpoint / Eval Step</th><th>Status</th><th>Success</th><th>Rate</th></tr></thead>
       <tbody id="runRows"></tbody>
     </table>
   </main>
@@ -207,12 +207,19 @@
       stepSelect.value = state.runId;
     }
 
-    function formatStep(step) {
-      return step === 'latest' ? 'latest' : `step ${step}`;
+    function formatStep(run) {
+      const step = run.step;
+      if (run.model === 'dp' || run.model === 'dp3' || run.model === 'dp_light') {
+        if (step === 'latest') return 'latest.ckpt (global step not recorded)';
+        if (String(step).startsWith('epoch ')) return `ckpt ${step}`;
+        return `ckpt global step ${step}`;
+      }
+      if (run.model === 'rynn_world') return step;
+      return `eval step ${step}`;
     }
 
     function formatRunOption(run) {
-      return `${formatStep(run.step)} · ${run.action_mode}`;
+      return `${formatStep(run)} · ${run.action_mode}`;
     }
 
     function rateText(run) {
@@ -262,7 +269,7 @@
         <div class="run-head">
           <div>
             <h2>${data.models[run.model]} · ${task.title}</h2>
-            <p class="meta">${run.status} · ${formatStep(run.step)} · ${run.action_mode} action · seed base ${run.seed_base ?? 'n/a'}</p>
+            <p class="meta">${run.status} · ${formatStep(run)} · ${run.action_mode} action · seed base ${run.seed_base ?? 'n/a'}</p>
             <p class="prompt"><b>Task prompt</b><code>${task.prompt}</code></p>
           </div>
           <div class="score ${statusClass}">${successText(run)}<span>${rateText(run)}</span></div>
@@ -274,7 +281,7 @@
     function renderRows() {
       runRows.innerHTML = data.runs.map((run) => {
         const task = data.tasks[run.task];
-        return `<tr><td>${data.models[run.model]}</td><td>${task.title}</td><td><code>${task.prompt}</code></td><td>${run.step}</td><td>${run.status}</td><td>${successText(run)}</td><td>${rateText(run)}</td></tr>`;
+        return `<tr><td>${data.models[run.model]}</td><td>${task.title}</td><td><code>${task.prompt}</code></td><td>${formatStep(run)} · ${run.action_mode}</td><td>${run.status}</td><td>${successText(run)}</td><td>${rateText(run)}</td></tr>`;
       }).join('');
     }
 
