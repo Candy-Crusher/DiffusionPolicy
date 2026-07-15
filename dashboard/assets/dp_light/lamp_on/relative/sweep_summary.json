@@ -1,0 +1,17 @@
+{"runs": [
+{
+  "seed": 930000,
+  "out_dir": "/net/holy-isilon/ifs/rc_labs/ydu_lab/xswu/repos/wam/lingbot-va/results/rlbench_comparison_closed_loop/diffusion_policy_light_relative_lamp_on/seed_930000",
+  "client_status": 0,
+  "metrics": {
+    "lamp_on": {
+      "task": "lamp_on",
+      "succ_num": 0.0,
+      "total_num": 10.0,
+      "succ_rate": 0.0,
+      "seed_base": 930000,
+      "action_pose_mode": "relative"
+    }
+  }
+}
+]}
