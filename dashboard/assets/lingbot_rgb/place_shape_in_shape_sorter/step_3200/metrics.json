@@ -1,7 +1,7 @@
 {
   "task": "place_shape_in_shape_sorter",
   "succ_num": 0.0,
-  "total_num": 3.0,
+  "total_num": 4.0,
   "succ_rate": 0.0,
   "seed_base": 930000,
   "action_pose_mode": "relative"
