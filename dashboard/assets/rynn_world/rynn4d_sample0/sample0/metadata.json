@@ -1,5 +1,0 @@
-{
-  "source_dir": "/net/holy-isilon/ifs/rc_labs/ydu_lab/xswu/repos/wam/RynnWorld-4D/results/rlbench_4d_vis_sample0_joint-on",
-  "prompt": "The robot uses its left arm to pick up a red apple from a basket and places it into a shopping cart.",
-  "note": "RynnWorld-4D world-model prediction emits synchronized RGB, depth, and optical-flow streams. Action deploy observation videos are displayed here when available."
-}
