@@ -1,8 +1,0 @@
-{
-  "task": "lamp_on",
-  "succ_num": 0.0,
-  "total_num": 10.0,
-  "succ_rate": 0.0,
-  "seed_base": 930000,
-  "action_pose_mode": "relative"
-}
