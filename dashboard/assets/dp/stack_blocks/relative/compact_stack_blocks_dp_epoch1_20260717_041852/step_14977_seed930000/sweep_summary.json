@@ -1,3 +1,4 @@
+{"runs": [
 {
   "seed": 930000,
   "out_dir": "/n/home07/xswu/work/repos/wam/lingbot-va/results/rlbench_rerender_place_shape_curves/compact_stack_blocks_dp_epoch1_20260717_041852/dp_rgb_only/step_14977_seed930000/seed_930000",
