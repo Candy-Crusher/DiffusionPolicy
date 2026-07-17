@@ -268,8 +268,19 @@
       return `eval step ${step}`;
     }
 
+    function sourceLabel(run) {
+      const id = run.run_id || '';
+      if (id.includes('compact_place_shape_dp_epoch1')) return 'PerACT compact rerender · fixed DP';
+      if (id.includes('compact_stack_blocks_dp_epoch1')) return 'PerACT compact rerender · fixed DP';
+      if (id.includes('compact_place_shape_20260717_022526')) return 'PerACT compact rerender';
+      if (id.includes('compact_stack_blocks_20260717_040704')) return 'PerACT compact rerender';
+      if (id.includes('rerun_h256')) return 'h256 rerun';
+      return '';
+    }
+
     function formatRunOption(run) {
-      return `${formatStep(run)} · ${run.action_mode}`;
+      const source = sourceLabel(run);
+      return `${formatStep(run)} · ${run.action_mode}${source ? ` · ${source}` : ''}`;
     }
 
     function rateText(run) {
@@ -289,6 +300,7 @@
         ['Model', data.models[state.model]],
         ['Task', task.title],
         ['Prompt', task.prompt],
+        ['Source', run ? (sourceLabel(run) || 'closed-loop dashboard') : 'no runs'],
         ['Success', run ? successText(run) : 'no runs'],
       ];
       cards.forEach(([label, value]) => {
