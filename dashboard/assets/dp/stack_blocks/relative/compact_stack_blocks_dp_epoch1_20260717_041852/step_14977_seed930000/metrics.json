@@ -1,7 +1,7 @@
 {
   "task": "stack_blocks",
   "succ_num": 0.0,
-  "total_num": 10.0,
+  "total_num": 7.0,
   "succ_rate": 0.0,
   "seed_base": 930000,
   "action_pose_mode": "relative"
