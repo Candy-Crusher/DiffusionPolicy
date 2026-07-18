@@ -1,0 +1,17 @@
+{"runs": [
+{
+  "seed": 930000,
+  "out_dir": "/n/home07/xswu/work/repos/wam/lingbot-va/results/rlbench_rerender_place_shape_curves/compact_peractfix2n_place_shape_20260717_1325/lingbot_rgb/step_1100_seed930000/seed_930000",
+  "client_status": 0,
+  "metrics": {
+    "place_shape_in_shape_sorter": {
+      "task": "place_shape_in_shape_sorter",
+      "succ_num": 0.0,
+      "total_num": 10.0,
+      "succ_rate": 0.0,
+      "seed_base": 930000,
+      "action_pose_mode": "relative"
+    }
+  }
+}
+]}
