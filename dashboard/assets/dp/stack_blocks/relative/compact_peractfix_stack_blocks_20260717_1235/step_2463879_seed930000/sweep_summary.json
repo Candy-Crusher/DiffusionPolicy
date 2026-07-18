@@ -1,0 +1,17 @@
+{"runs": [
+{
+  "seed": 930000,
+  "out_dir": "/n/home07/xswu/work/repos/wam/lingbot-va/results/rlbench_rerender_place_shape_curves/compact_peractfix_stack_blocks_20260717_1235/dp_rgb_only/step_2463879_seed930000/seed_930000",
+  "client_status": 0,
+  "metrics": {
+    "stack_blocks": {
+      "task": "stack_blocks",
+      "succ_num": 0.0,
+      "total_num": 10.0,
+      "succ_rate": 0.0,
+      "seed_base": 930000,
+      "action_pose_mode": "relative"
+    }
+  }
+}
+]}
