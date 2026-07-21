@@ -1,8 +1,8 @@
 {
   "task": "stack_cups",
-  "succ_num": 2.0,
-  "total_num": 5.0,
-  "succ_rate": 0.4,
+  "succ_num": 5.0,
+  "total_num": 10.0,
+  "succ_rate": 0.5,
   "seed_base": 930000,
   "action_pose_mode": "relative"
 }
