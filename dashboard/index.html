@@ -93,6 +93,13 @@
     th { color: var(--muted); background: #edf3f5; font-weight: 700; }
     tr:last-child td { border-bottom: 0; }
     .empty { padding: 28px; text-align: center; color: var(--muted); }
+    .spatial-forcing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin-top: 16px; }
+    .spatial-forcing-card { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #fff; }
+    .spatial-forcing-card h3 { margin: 0; padding: 10px 11px 0; font-size: 17px; }
+    .spatial-forcing-card p { margin: 4px 11px 10px; color: var(--muted); font-size: 13px; }
+    .spatial-forcing-card a { display: block; padding: 8px 11px 11px; font-size: 13px; }
+    .spatial-forcing-figure { width: 100%; margin: 18px 0 0; border: 1px solid var(--line); border-radius: 8px; }
+    .spatial-forcing-caption { margin: 6px 0 0; color: var(--muted); font-size: 13px; }
     @media (max-width: 860px) {
       .controls { grid-template-columns: 1fr; }
       .summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -109,6 +116,47 @@
     </div>
   </header>
   <main class="wrap">
+    <section class="panel" aria-labelledby="spatial-forcing-title">
+      <h2 id="spatial-forcing-title">Spatial Forcing matched comparison</h2>
+      <p class="meta">RLBench <code>stack_cups</code> · 10 episodes · seed <code>930000</code> · relative action pose · latest completed readouts</p>
+      <table>
+        <thead><tr><th>Setting</th><th>Checkpoint</th><th>Success</th><th>Rate</th></tr></thead>
+        <tbody>
+          <tr><td>Frame baseline</td><td><code>step800</code></td><td>1 / 10</td><td><strong>10%</strong></td></tr>
+          <tr><td>Random patches</td><td><code>step800</code></td><td>0 / 10</td><td><strong>0%</strong></td></tr>
+          <tr><td>GT-flow spatial</td><td><code>step1150</code></td><td>0 / 10</td><td><strong>0%</strong></td></tr>
+          <tr><td>EEF-contact spatial</td><td><code>step950</code></td><td>0 / 10</td><td><strong>0%</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="spatial-forcing-grid">
+        <article class="spatial-forcing-card">
+          <h3>Frame baseline · step800</h3>
+          <p>1 / 10 success</p>
+          <video controls preload="metadata"><source src="assets/spatial_forcing/frame_baseline_step800.mp4" type="video/mp4"></video>
+          <a href="assets/spatial_forcing/frame_baseline_step800.mp4">Open episode 0 comparison</a>
+        </article>
+        <article class="spatial-forcing-card">
+          <h3>Random patches · step800</h3>
+          <p>0 / 10 success</p>
+          <video controls preload="metadata"><source src="assets/spatial_forcing/random_patches_step800.mp4" type="video/mp4"></video>
+          <a href="assets/spatial_forcing/random_patches_step800.mp4">Open episode 0 comparison</a>
+        </article>
+        <article class="spatial-forcing-card">
+          <h3>GT-flow spatial · step1150</h3>
+          <p>0 / 10 success</p>
+          <video controls preload="metadata"><source src="assets/spatial_forcing/gtflow_step1150.mp4" type="video/mp4"></video>
+          <a href="assets/spatial_forcing/gtflow_step1150.mp4">Open episode 0 comparison</a>
+        </article>
+        <article class="spatial-forcing-card">
+          <h3>EEF-contact spatial · step950</h3>
+          <p>0 / 10 success</p>
+          <video controls preload="metadata"><source src="assets/spatial_forcing/eef_contact_step950.mp4" type="video/mp4"></video>
+          <a href="assets/spatial_forcing/eef_contact_step950.mp4">Open episode 0 comparison</a>
+        </article>
+      </div>
+      <img class="spatial-forcing-figure" src="assets/spatial_forcing/spatial_forcing_comparison.png" alt="Spatial Forcing latent noise pattern comparison">
+      <p class="spatial-forcing-caption">Latent-noise pattern overview used for the four matched experiments.</p>
+    </section>
     <section class="controls" aria-label="Dashboard controls">
       <div>
         <label>Model</label>
