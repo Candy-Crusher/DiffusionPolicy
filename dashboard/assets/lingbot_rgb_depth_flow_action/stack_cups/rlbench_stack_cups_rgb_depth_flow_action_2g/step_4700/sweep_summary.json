@@ -1,0 +1,17 @@
+{"runs": [
+{
+  "seed": 930000,
+  "out_dir": "/n/home07/xswu/work/repos/wam/lingbot-va/results/rlbench_comparison_closed_loop/rlbench_stack_cups_rgb_depth_flow_action_2g/step_4700_seed930000/seed_930000",
+  "client_status": 0,
+  "metrics": {
+    "stack_cups": {
+      "task": "stack_cups",
+      "succ_num": 6.0,
+      "total_num": 10.0,
+      "succ_rate": 0.6,
+      "seed_base": 930000,
+      "action_pose_mode": "relative"
+    }
+  }
+}
+]}
