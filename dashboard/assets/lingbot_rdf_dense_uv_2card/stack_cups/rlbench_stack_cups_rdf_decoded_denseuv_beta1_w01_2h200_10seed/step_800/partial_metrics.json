@@ -1,0 +1,72 @@
+{
+  "status": "running",
+  "completed_seeds": 8,
+  "success": 2,
+  "rate": 0.25,
+  "runs": [
+    {
+      "task": "stack_cups",
+      "succ_num": 0.0,
+      "total_num": 1.0,
+      "succ_rate": 0.0,
+      "seed_base": 930000,
+      "action_pose_mode": "relative"
+    },
+    {
+      "task": "stack_cups",
+      "succ_num": 0.0,
+      "total_num": 1.0,
+      "succ_rate": 0.0,
+      "seed_base": 930001,
+      "action_pose_mode": "relative"
+    },
+    {
+      "task": "stack_cups",
+      "succ_num": 0.0,
+      "total_num": 1.0,
+      "succ_rate": 0.0,
+      "seed_base": 930002,
+      "action_pose_mode": "relative"
+    },
+    {
+      "task": "stack_cups",
+      "succ_num": 0.0,
+      "total_num": 1.0,
+      "succ_rate": 0.0,
+      "seed_base": 930003,
+      "action_pose_mode": "relative"
+    },
+    {
+      "task": "stack_cups",
+      "succ_num": 1.0,
+      "total_num": 1.0,
+      "succ_rate": 1.0,
+      "seed_base": 930004,
+      "action_pose_mode": "relative"
+    },
+    {
+      "task": "stack_cups",
+      "succ_num": 0.0,
+      "total_num": 1.0,
+      "succ_rate": 0.0,
+      "seed_base": 930005,
+      "action_pose_mode": "relative"
+    },
+    {
+      "task": "stack_cups",
+      "succ_num": 1.0,
+      "total_num": 1.0,
+      "succ_rate": 1.0,
+      "seed_base": 930006,
+      "action_pose_mode": "relative"
+    },
+    {
+      "task": "stack_cups",
+      "succ_num": 0.0,
+      "total_num": 1.0,
+      "succ_rate": 0.0,
+      "seed_base": 930007,
+      "action_pose_mode": "relative"
+    }
+  ]
+}
