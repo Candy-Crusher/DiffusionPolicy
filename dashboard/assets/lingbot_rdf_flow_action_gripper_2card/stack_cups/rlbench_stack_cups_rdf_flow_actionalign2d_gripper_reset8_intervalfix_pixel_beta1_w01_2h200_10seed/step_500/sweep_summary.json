@@ -1,0 +1,161 @@
+{"runs": [
+{
+  "seed": 930000,
+  "out_dir": "/n/home07/xswu/work/repos/wam/lingbot-va/results/flow_encdec_eval/rlbench_stack_cups_rdf_flow_actionalign2d_gripper_reset8_intervalfix_pixel_beta1_w01_2h200_10seed/step_500_seeds10_h4078551537/seed_930000",
+  "client_status": 0,
+  "metrics": {
+    "stack_cups": {
+      "task": "stack_cups",
+      "succ_num": 0.0,
+      "total_num": 1.0,
+      "succ_rate": 0.0,
+      "seed_base": 930000,
+      "action_pose_mode": "relative"
+    }
+  }
+}
+,
+{
+  "seed": 930001,
+  "out_dir": "/n/home07/xswu/work/repos/wam/lingbot-va/results/flow_encdec_eval/rlbench_stack_cups_rdf_flow_actionalign2d_gripper_reset8_intervalfix_pixel_beta1_w01_2h200_10seed/step_500_seeds10_h4078551537/seed_930001",
+  "client_status": 0,
+  "metrics": {
+    "stack_cups": {
+      "task": "stack_cups",
+      "succ_num": 0.0,
+      "total_num": 1.0,
+      "succ_rate": 0.0,
+      "seed_base": 930001,
+      "action_pose_mode": "relative"
+    }
+  }
+}
+,
+{
+  "seed": 930002,
+  "out_dir": "/n/home07/xswu/work/repos/wam/lingbot-va/results/flow_encdec_eval/rlbench_stack_cups_rdf_flow_actionalign2d_gripper_reset8_intervalfix_pixel_beta1_w01_2h200_10seed/step_500_seeds10_h4078551537/seed_930002",
+  "client_status": 0,
+  "metrics": {
+    "stack_cups": {
+      "task": "stack_cups",
+      "succ_num": 0.0,
+      "total_num": 1.0,
+      "succ_rate": 0.0,
+      "seed_base": 930002,
+      "action_pose_mode": "relative"
+    }
+  }
+}
+,
+{
+  "seed": 930003,
+  "out_dir": "/n/home07/xswu/work/repos/wam/lingbot-va/results/flow_encdec_eval/rlbench_stack_cups_rdf_flow_actionalign2d_gripper_reset8_intervalfix_pixel_beta1_w01_2h200_10seed/step_500_seeds10_h4078551537/seed_930003",
+  "client_status": 0,
+  "metrics": {
+    "stack_cups": {
+      "task": "stack_cups",
+      "succ_num": 0.0,
+      "total_num": 1.0,
+      "succ_rate": 0.0,
+      "seed_base": 930003,
+      "action_pose_mode": "relative"
+    }
+  }
+}
+,
+{
+  "seed": 930004,
+  "out_dir": "/n/home07/xswu/work/repos/wam/lingbot-va/results/flow_encdec_eval/rlbench_stack_cups_rdf_flow_actionalign2d_gripper_reset8_intervalfix_pixel_beta1_w01_2h200_10seed/step_500_seeds10_h4078551537/seed_930004",
+  "client_status": 0,
+  "metrics": {
+    "stack_cups": {
+      "task": "stack_cups",
+      "succ_num": 0.0,
+      "total_num": 1.0,
+      "succ_rate": 0.0,
+      "seed_base": 930004,
+      "action_pose_mode": "relative"
+    }
+  }
+}
+,
+{
+  "seed": 930005,
+  "out_dir": "/n/home07/xswu/work/repos/wam/lingbot-va/results/flow_encdec_eval/rlbench_stack_cups_rdf_flow_actionalign2d_gripper_reset8_intervalfix_pixel_beta1_w01_2h200_10seed/step_500_seeds10_h4078551537/seed_930005",
+  "client_status": 0,
+  "metrics": {
+    "stack_cups": {
+      "task": "stack_cups",
+      "succ_num": 0.0,
+      "total_num": 1.0,
+      "succ_rate": 0.0,
+      "seed_base": 930005,
+      "action_pose_mode": "relative"
+    }
+  }
+}
+,
+{
+  "seed": 930006,
+  "out_dir": "/n/home07/xswu/work/repos/wam/lingbot-va/results/flow_encdec_eval/rlbench_stack_cups_rdf_flow_actionalign2d_gripper_reset8_intervalfix_pixel_beta1_w01_2h200_10seed/step_500_seeds10_h4078551537/seed_930006",
+  "client_status": 0,
+  "metrics": {
+    "stack_cups": {
+      "task": "stack_cups",
+      "succ_num": 0.0,
+      "total_num": 1.0,
+      "succ_rate": 0.0,
+      "seed_base": 930006,
+      "action_pose_mode": "relative"
+    }
+  }
+}
+,
+{
+  "seed": 930007,
+  "out_dir": "/n/home07/xswu/work/repos/wam/lingbot-va/results/flow_encdec_eval/rlbench_stack_cups_rdf_flow_actionalign2d_gripper_reset8_intervalfix_pixel_beta1_w01_2h200_10seed/step_500_seeds10_h4078551537/seed_930007",
+  "client_status": 0,
+  "metrics": {
+    "stack_cups": {
+      "task": "stack_cups",
+      "succ_num": 0.0,
+      "total_num": 1.0,
+      "succ_rate": 0.0,
+      "seed_base": 930007,
+      "action_pose_mode": "relative"
+    }
+  }
+}
+,
+{
+  "seed": 930008,
+  "out_dir": "/n/home07/xswu/work/repos/wam/lingbot-va/results/flow_encdec_eval/rlbench_stack_cups_rdf_flow_actionalign2d_gripper_reset8_intervalfix_pixel_beta1_w01_2h200_10seed/step_500_seeds10_h4078551537/seed_930008",
+  "client_status": 0,
+  "metrics": {
+    "stack_cups": {
+      "task": "stack_cups",
+      "succ_num": 0.0,
+      "total_num": 1.0,
+      "succ_rate": 0.0,
+      "seed_base": 930008,
+      "action_pose_mode": "relative"
+    }
+  }
+}
+,
+{
+  "seed": 930009,
+  "out_dir": "/n/home07/xswu/work/repos/wam/lingbot-va/results/flow_encdec_eval/rlbench_stack_cups_rdf_flow_actionalign2d_gripper_reset8_intervalfix_pixel_beta1_w01_2h200_10seed/step_500_seeds10_h4078551537/seed_930009",
+  "client_status": 0,
+  "metrics": {
+    "stack_cups": {
+      "task": "stack_cups",
+      "succ_num": 0.0,
+      "total_num": 1.0,
+      "succ_rate": 0.0,
+      "seed_base": 930009,
+      "action_pose_mode": "relative"
+    }
+  }
+}
+]}
