@@ -1,0 +1,16 @@
+{
+  "status": "running",
+  "completed_seeds": 1,
+  "success": 0,
+  "rate": 0.0,
+  "runs": [
+    {
+      "task": "stack_cups",
+      "succ_num": 0.0,
+      "total_num": 1.0,
+      "succ_rate": 0.0,
+      "seed_base": 930000,
+      "action_pose_mode": "relative"
+    }
+  ]
+}
