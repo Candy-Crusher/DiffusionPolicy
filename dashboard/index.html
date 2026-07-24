@@ -100,6 +100,11 @@
     .spatial-forcing-card a { display: block; padding: 8px 11px 11px; font-size: 13px; }
     .spatial-forcing-figure { width: 100%; margin: 18px 0 0; border: 1px solid var(--line); border-radius: 8px; }
     .spatial-forcing-caption { margin: 6px 0 0; color: var(--muted); font-size: 13px; }
+    .ablation-panel { margin-top: 16px; }
+    .ablation-chart { display: block; width: 100%; height: auto; margin-top: 14px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+    .ablation-chart text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .ablation-note { margin: 8px 0 0; color: var(--muted); font-size: 13px; }
+    .partial-badge { display: inline-block; margin-left: 5px; padding: 1px 6px; border-radius: 999px; background: #fff4dc; color: var(--warn); font-size: 12px; font-weight: 700; }
     @media (max-width: 860px) {
       .controls { grid-template-columns: 1fr; }
       .summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -157,6 +162,140 @@
       <img class="spatial-forcing-figure" src="assets/spatial_forcing/spatial_forcing_comparison.png" alt="Spatial Forcing latent noise pattern comparison">
       <p class="spatial-forcing-caption">Latent-noise pattern overview used for the four matched experiments.</p>
     </section>
+    <section class="panel ablation-panel" aria-labelledby="flow-ablation-title">
+      <h2 id="flow-ablation-title">Stack Cups flow-supervision ablations</h2>
+      <p class="meta">10-seed closed-loop evaluation · relative action pose · complete checkpoints through July 24, 2026</p>
+      <svg class="ablation-chart" id="flowAblationChart" viewBox="0 0 960 440" role="img" aria-labelledby="flowAblationChartTitle flowAblationChartDesc">
+        <title id="flowAblationChartTitle">Stack Cups success rate by training step for flow-supervision ablations</title>
+        <desc id="flowAblationChartDesc">Dense decoded UV, local flow-action alignment, and predicted-flow versus predicted-action consistency experiments, each evaluated on ten seeds.</desc>
+      </svg>
+      <p class="ablation-note">Lines include only completed 10-seed evaluations. Partial evaluations remain in the table and are not connected into the curves.</p>
+      <table>
+        <thead><tr><th>Setting</th><th>Latest complete</th><th>Best complete</th><th>Current status</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Dense decoded UV · 2-node</td>
+            <td><code>step3300: 5/10</code></td>
+            <td><strong><code>step2100: 7/10</code></strong></td>
+            <td><code>step3400: 5/7</code><span class="partial-badge">partial</span></td>
+          </tr>
+          <tr>
+            <td>Dense decoded UV · 2-card</td>
+            <td><code>step1100: 2/10</code></td>
+            <td><strong><code>2/10</code></strong> at steps 700, 800, 1000, and 1100</td>
+            <td><code>step1400</code> rollout running after watcher recovery</td>
+          </tr>
+          <tr>
+            <td>Pred flow ↔ pred action · 2-card</td>
+            <td><code>step500: 0/10</code></td>
+            <td><strong><code>0/10</code></strong> through step500</td>
+            <td>Complete through step500</td>
+          </tr>
+          <tr>
+            <td>Pred flow ↔ pred action · 2-node</td>
+            <td>None yet</td>
+            <td>None yet</td>
+            <td><code>step100: 0/8</code><span class="partial-badge">partial</span>; training has reached step200</td>
+          </tr>
+          <tr>
+            <td>Local gripper flow-action alignment · 2-node</td>
+            <td><code>step2000: 3/10</code></td>
+            <td><strong><code>step2000: 3/10</code></strong></td>
+            <td>Latest completed local-alignment checkpoint</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="ablation-note"><strong>Current readout:</strong> direct dense decoded-flow supervision shows the strongest signal, peaking at 70%, while the new predicted-flow/predicted-action consistency loss has not yet produced a successful rollout.</p>
+    </section>
+    <script>
+      (() => {
+        const svg = document.getElementById('flowAblationChart');
+        const namespace = 'http://www.w3.org/2000/svg';
+        const plot = { left: 64, right: 936, top: 24, bottom: 326 };
+        const xMax = 3500;
+        const yMax = 80;
+        const series = [
+          {
+            label: 'Dense decoded UV · 2-node',
+            color: '#0f766e',
+            values: [[100,0],[300,0],[500,30],[600,0],[800,30],[1000,30],[1200,40],[1300,40],[1500,10],[1700,30],[1900,50],[2100,70],[2200,30],[2400,30],[2600,20],[2700,40],[2900,30],[3100,20],[3300,50]],
+          },
+          {
+            label: 'Dense decoded UV · 2-card',
+            color: '#2f80ed',
+            values: [[100,0],[200,0],[300,10],[400,0],[500,10],[600,10],[700,20],[800,20],[900,10],[1000,20],[1100,20]],
+          },
+          {
+            label: 'Local alignment · 2-node',
+            color: '#d97706',
+            values: [[100,0],[300,0],[400,0],[600,0],[800,10],[1000,20],[1200,10],[1400,10],[1600,10],[1800,20],[2000,30]],
+          },
+          {
+            label: 'Local alignment · 2-card',
+            color: '#f59e0b',
+            values: [[100,0],[200,0],[300,10],[400,10],[500,0],[600,0],[700,10],[800,20]],
+          },
+          {
+            label: 'Pred flow ↔ pred action · 2-card',
+            color: '#b83280',
+            values: [[100,0],[200,0],[300,0],[400,0],[500,0]],
+          },
+        ];
+        const partials = [
+          { label: 'Dense 2-node · step3400 · 5/7 partial', color: '#0f766e', value: [3400, 500 / 7] },
+          { label: 'Pred pair 2-node · step100 · 0/8 partial', color: '#7c3aed', value: [100, 0] },
+        ];
+        const make = (tag, attrs = {}, text = '') => {
+          const element = document.createElementNS(namespace, tag);
+          Object.entries(attrs).forEach(([key, value]) => element.setAttribute(key, value));
+          if (text) element.textContent = text;
+          svg.appendChild(element);
+          return element;
+        };
+        const x = (value) => plot.left + (value / xMax) * (plot.right - plot.left);
+        const y = (value) => plot.bottom - (value / yMax) * (plot.bottom - plot.top);
+
+        for (let value = 0; value <= yMax; value += 10) {
+          make('line', { x1: plot.left, x2: plot.right, y1: y(value), y2: y(value), stroke: '#e4e9ef', 'stroke-width': 1 });
+          make('text', { x: plot.left - 10, y: y(value) + 4, fill: '#607083', 'font-size': 12, 'text-anchor': 'end' }, `${value}%`);
+        }
+        for (let value = 0; value <= xMax; value += 500) {
+          make('line', { x1: x(value), x2: x(value), y1: plot.top, y2: plot.bottom, stroke: '#f0f3f7', 'stroke-width': 1 });
+          make('text', { x: x(value), y: plot.bottom + 22, fill: '#607083', 'font-size': 12, 'text-anchor': 'middle' }, String(value));
+        }
+        make('text', { x: (plot.left + plot.right) / 2, y: plot.bottom + 45, fill: '#607083', 'font-size': 13, 'text-anchor': 'middle' }, 'Training step');
+        make('text', { x: 18, y: (plot.top + plot.bottom) / 2, fill: '#607083', 'font-size': 13, 'text-anchor': 'middle', transform: `rotate(-90 18 ${(plot.top + plot.bottom) / 2})` }, 'Success rate');
+
+        series.forEach((item) => {
+          const points = item.values.map(([step, rate]) => `${x(step)},${y(rate)}`).join(' ');
+          make('polyline', { points, fill: 'none', stroke: item.color, 'stroke-width': 3, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' });
+          item.values.forEach(([step, rate]) => {
+            const point = make('circle', { cx: x(step), cy: y(rate), r: 4, fill: '#fff', stroke: item.color, 'stroke-width': 2 });
+            const title = document.createElementNS(namespace, 'title');
+            title.textContent = `${item.label}: step ${step}, ${rate.toFixed(0)}%`;
+            point.appendChild(title);
+          });
+        });
+        partials.forEach((item) => {
+          const [step, rate] = item.value;
+          const point = make('circle', { cx: x(step), cy: y(rate), r: 7, fill: '#fff', stroke: item.color, 'stroke-width': 3, 'stroke-dasharray': '3 2' });
+          const title = document.createElementNS(namespace, 'title');
+          title.textContent = item.label;
+          point.appendChild(title);
+        });
+
+        const legendItems = [...series, { label: 'Partial eval (hollow dashed marker)', color: '#7c3aed' }];
+        legendItems.forEach((item, index) => {
+          const column = index % 2;
+          const row = Math.floor(index / 2);
+          const legendX = 72 + column * 430;
+          const legendY = 378 + row * 24;
+          make('line', { x1: legendX, x2: legendX + 28, y1: legendY, y2: legendY, stroke: item.color, 'stroke-width': 3 });
+          make('circle', { cx: legendX + 14, cy: legendY, r: 4, fill: '#fff', stroke: item.color, 'stroke-width': 2 });
+          make('text', { x: legendX + 38, y: legendY + 4, fill: '#16202b', 'font-size': 12 }, item.label);
+        });
+      })();
+    </script>
     <section class="controls" aria-label="Dashboard controls">
       <div>
         <label>Model</label>
