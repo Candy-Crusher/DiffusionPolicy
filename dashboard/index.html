@@ -166,6 +166,11 @@
       <h2 id="rdf-mf-title">RDF Modality Forcing (RDF-MF)</h2>
       <p class="meta">RLBench <code>stack_cups</code> · independent RGB / Depth / Flow training timesteps · relative Action remains on the original LingBot-VA causal schedule</p>
       <p>RDF-MF tests whether a more reliable visual modality should advance first at each reverse-diffusion step, then condition the other modalities. The fixed-leader sampler uses two forwards per visual step and commits only the final visual state to KV cache. The current training run uses fully independent modality timesteps; it is <strong>not</strong> the proposed 40% shared + 20% per-leader mixture.</p>
+      <svg class="ablation-chart" id="rdfMfSuccessChart" viewBox="0 0 960 410" role="img" aria-labelledby="rdfMfSuccessChartTitle rdfMfSuccessChartDesc">
+        <title id="rdfMfSuccessChartTitle">RDF modality forcing shared-inference success rate by training step</title>
+        <desc id="rdfMfSuccessChartDesc">Eight completed ten-seed evaluations from training job 36099846, covering steps 900 through 1700.</desc>
+      </svg>
+      <p class="ablation-note">Each point is a completed 10-seed closed-loop evaluation using <code>shared</code> inference. Job <code>36099846</code> stopped at step1700 after a checkpoint-save NCCL timeout; step1700 is the last available checkpoint, not the planned training endpoint.</p>
       <table>
         <thead><tr><th>Checkpoint / inference</th><th>Success</th><th>RGB PSNR ↑</th><th>Depth δ1 ↑</th><th>Depth RMSE ↓</th><th>Flow EPE ↓</th><th>Moving Flow EPE ↓</th></tr></thead>
         <tbody>
@@ -208,6 +213,51 @@
         <a href="https://candy-crusher.github.io/FAB/weeks/2026-07-29-rdf-modality-forcing.html">Detailed RDF-MF research log</a>
       </div>
     </section>
+    <script>
+      (() => {
+        const svg = document.getElementById('rdfMfSuccessChart');
+        const namespace = 'http://www.w3.org/2000/svg';
+        const plot = { left: 72, right: 930, top: 28, bottom: 316 };
+        const values = [[900,10],[1100,0],[1200,0],[1300,20],[1400,10],[1500,20],[1600,40],[1700,20]];
+        const xMin = 800;
+        const xMax = 1800;
+        const yMax = 50;
+        const color = '#155e75';
+        const make = (tag, attrs = {}, text = '') => {
+          const element = document.createElementNS(namespace, tag);
+          Object.entries(attrs).forEach(([key, value]) => element.setAttribute(key, value));
+          if (text) element.textContent = text;
+          svg.appendChild(element);
+          return element;
+        };
+        const x = (value) => plot.left + ((value - xMin) / (xMax - xMin)) * (plot.right - plot.left);
+        const y = (value) => plot.bottom - (value / yMax) * (plot.bottom - plot.top);
+
+        for (let value = 0; value <= yMax; value += 10) {
+          make('line', { x1: plot.left, x2: plot.right, y1: y(value), y2: y(value), stroke: '#e4e9ef', 'stroke-width': 1 });
+          make('text', { x: plot.left - 10, y: y(value) + 4, fill: '#607083', 'font-size': 12, 'text-anchor': 'end' }, `${value}%`);
+        }
+        for (let value = xMin; value <= xMax; value += 100) {
+          make('line', { x1: x(value), x2: x(value), y1: plot.top, y2: plot.bottom, stroke: '#f0f3f7', 'stroke-width': 1 });
+          make('text', { x: x(value), y: plot.bottom + 22, fill: '#607083', 'font-size': 12, 'text-anchor': 'middle' }, String(value));
+        }
+        make('text', { x: (plot.left + plot.right) / 2, y: plot.bottom + 48, fill: '#607083', 'font-size': 13, 'text-anchor': 'middle' }, 'Training checkpoint step');
+        make('text', { x: 20, y: (plot.top + plot.bottom) / 2, fill: '#607083', 'font-size': 13, 'text-anchor': 'middle', transform: `rotate(-90 20 ${(plot.top + plot.bottom) / 2})` }, 'Success rate');
+
+        const points = values.map(([step, rate]) => `${x(step)},${y(rate)}`).join(' ');
+        make('polyline', { points, fill: 'none', stroke: color, 'stroke-width': 3, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' });
+        values.forEach(([step, rate]) => {
+          const point = make('circle', { cx: x(step), cy: y(rate), r: 5, fill: '#fff', stroke: color, 'stroke-width': 3 });
+          const title = document.createElementNS(namespace, 'title');
+          title.textContent = `shared: step ${step}, ${rate}% (${rate / 10}/10)`;
+          point.appendChild(title);
+          make('text', { x: x(step), y: y(rate) - 11, fill: '#16202b', 'font-size': 12, 'font-weight': 700, 'text-anchor': 'middle' }, `${rate}%`);
+        });
+        make('line', { x1: 74, x2: 106, y1: 385, y2: 385, stroke: color, 'stroke-width': 3 });
+        make('circle', { cx: 90, cy: 385, r: 5, fill: '#fff', stroke: color, 'stroke-width': 3 });
+        make('text', { x: 116, y: 389, fill: '#16202b', 'font-size': 12 }, 'Independent training schedule · shared inference');
+      })();
+    </script>
     <section class="panel ablation-panel" aria-labelledby="flow-ablation-title">
       <h2 id="flow-ablation-title">Stack Cups flow-supervision ablations</h2>
       <p class="meta">10-seed closed-loop evaluation · relative action pose · complete checkpoints through July 24, 2026</p>
