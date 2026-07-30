@@ -162,6 +162,52 @@
       <img class="spatial-forcing-figure" src="assets/spatial_forcing/spatial_forcing_comparison.png" alt="Spatial Forcing latent noise pattern comparison">
       <p class="spatial-forcing-caption">Latent-noise pattern overview used for the four matched experiments.</p>
     </section>
+    <section class="panel ablation-panel" aria-labelledby="rdf-mf-title">
+      <h2 id="rdf-mf-title">RDF Modality Forcing (RDF-MF)</h2>
+      <p class="meta">RLBench <code>stack_cups</code> · independent RGB / Depth / Flow training timesteps · relative Action remains on the original LingBot-VA causal schedule</p>
+      <p>RDF-MF tests whether a more reliable visual modality should advance first at each reverse-diffusion step, then condition the other modalities. The fixed-leader sampler uses two forwards per visual step and commits only the final visual state to KV cache. The current training run uses fully independent modality timesteps; it is <strong>not</strong> the proposed 40% shared + 20% per-leader mixture.</p>
+      <table>
+        <thead><tr><th>Checkpoint / inference</th><th>Success</th><th>RGB PSNR ↑</th><th>Depth δ1 ↑</th><th>Depth RMSE ↓</th><th>Flow EPE ↓</th><th>Moving Flow EPE ↓</th></tr></thead>
+        <tbody>
+          <tr><td><code>step1700 · shared</code></td><td><strong>2 / 10</strong></td><td>25.12 dB</td><td>0.989</td><td>13.53 m <span class="partial-badge">outlier-sensitive</span></td><td>0.19 px</td><td>1.60 px</td></tr>
+        </tbody>
+      </table>
+      <p class="ablation-note">Depth δ1 is stable, while metric RMSE remains dominated by rare decoded-depth outliers. Do not interpret the RMSE as typical scene-scale error.</p>
+      <table>
+        <thead><tr><th>Matched step1700 strategy</th><th>Slurm job</th><th>Status at dashboard update</th><th>Planned output</th></tr></thead>
+        <tbody>
+          <tr><td><code>shared</code></td><td><code>36396829</code></td><td>running</td><td>10 seeds + RGB/Depth/Flow videos</td></tr>
+          <tr><td><code>rgb_first</code></td><td><code>36396845</code></td><td>queued</td><td>10 seeds + RGB/Depth/Flow videos</td></tr>
+          <tr><td><code>depth_first</code></td><td><code>36396843</code></td><td>queued</td><td>10 seeds + RGB/Depth/Flow videos</td></tr>
+          <tr><td><code>flow_first</code></td><td><code>36396844</code></td><td>queued</td><td>10 seeds + RGB/Depth/Flow videos</td></tr>
+        </tbody>
+      </table>
+      <p class="ablation-note"><strong>Run correction:</strong> the first step1000 matrix acquired GPUs only after the continuous watcher had deleted that old checkpoint. Those jobs exited before model loading and produced no model result. The active matrix uses an independently retained step1700 Transformer snapshot.</p>
+      <div class="spatial-forcing-grid">
+        <article class="spatial-forcing-card">
+          <h3>Shared · seed 930003</h3>
+          <p><span class="ok">SUCCESS</span> · RGB / Depth / Flow GT, prediction, and error heatmaps</p>
+          <video controls preload="metadata"><source src="assets/rdf_mf/step_1700/shared/episode_0003_compare.mp4" type="video/mp4"></video>
+          <a href="assets/rdf_mf/step_1700/shared/episode_0003_compare.mp4">Open comparison video</a>
+        </article>
+        <article class="spatial-forcing-card">
+          <h3>Shared · seed 930009</h3>
+          <p><span class="ok">SUCCESS</span> · second successful rollout</p>
+          <video controls preload="metadata"><source src="assets/rdf_mf/step_1700/shared/episode_0009_compare.mp4" type="video/mp4"></video>
+          <a href="assets/rdf_mf/step_1700/shared/episode_0009_compare.mp4">Open comparison video</a>
+        </article>
+        <article class="spatial-forcing-card">
+          <h3>Shared · seed 930000</h3>
+          <p><span class="fail">FAILURE</span> · representative unsuccessful rollout</p>
+          <video controls preload="metadata"><source src="assets/rdf_mf/step_1700/shared/episode_0000_compare.mp4" type="video/mp4"></video>
+          <a href="assets/rdf_mf/step_1700/shared/episode_0000_compare.mp4">Open comparison video</a>
+        </article>
+      </div>
+      <div class="links">
+        <a href="assets/rdf_mf/step_1700/shared/metrics_summary.json">Shared step1700 metrics JSON</a>
+        <a href="https://candy-crusher.github.io/FAB/weeks/2026-07-29-rdf-modality-forcing.html">Detailed RDF-MF research log</a>
+      </div>
+    </section>
     <section class="panel ablation-panel" aria-labelledby="flow-ablation-title">
       <h2 id="flow-ablation-title">Stack Cups flow-supervision ablations</h2>
       <p class="meta">10-seed closed-loop evaluation · relative action pose · complete checkpoints through July 24, 2026</p>
