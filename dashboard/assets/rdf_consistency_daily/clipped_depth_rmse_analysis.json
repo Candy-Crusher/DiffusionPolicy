@@ -1,0 +1,395 @@
+{
+  "episodes": 80,
+  "global_abs_error_clip_thresholds_m": {
+    "p95": 0.04274606704711914,
+    "p99": 0.2939566493034365
+  },
+  "metrics_vs_success": {
+    "depth_abs_p95_episode": {
+      "auc_lower_predicts_success": 0.799812030075188,
+      "failure_mean": 0.04493367515112221,
+      "failure_median": 0.04486560821533203,
+      "pearson": -0.4981469877517815,
+      "quartiles_low_to_high": [
+        {
+          "mean": 0.037867318391799895,
+          "n": 20,
+          "quartile_low_to_high": 1,
+          "range": [
+            0.0358736515045166,
+            0.038892269134521484
+          ],
+          "success_rate": 0.85,
+          "successes": 17
+        },
+        {
+          "mean": 0.04042577743530262,
+          "n": 20,
+          "quartile_low_to_high": 2,
+          "range": [
+            0.03896594047546387,
+            0.041980743408203125
+          ],
+          "success_rate": 0.8,
+          "successes": 16
+        },
+        {
+          "mean": 0.04398529231548308,
+          "n": 20,
+          "quartile_low_to_high": 3,
+          "range": [
+            0.04239797592163086,
+            0.04564404487609863
+          ],
+          "success_rate": 0.2,
+          "successes": 4
+        },
+        {
+          "mean": 0.04847300648689267,
+          "n": 20,
+          "quartile_low_to_high": 4,
+          "range": [
+            0.04570215940475443,
+            0.05362051725387541
+          ],
+          "success_rate": 0.25,
+          "successes": 5
+        }
+      ],
+      "spearman": -0.5187019526782382,
+      "success_mean": 0.04065591040111717,
+      "success_median": 0.039439976215362535
+    },
+    "depth_abs_p99_episode": {
+      "auc_lower_predicts_success": 0.8884711779448622,
+      "failure_mean": 0.4223286440497937,
+      "failure_median": 0.3625204503536222,
+      "pearson": -0.469243310709005,
+      "quartiles_low_to_high": [
+        {
+          "mean": 0.1795502482652652,
+          "n": 20,
+          "quartile_low_to_high": 1,
+          "range": [
+            0.14994544982910196,
+            0.20550194740295408
+          ],
+          "success_rate": 1.0,
+          "successes": 20
+        },
+        {
+          "mean": 0.24027587866783198,
+          "n": 20,
+          "quartile_low_to_high": 2,
+          "range": [
+            0.20652532577514648,
+            0.2778947353363037
+          ],
+          "success_rate": 0.75,
+          "successes": 15
+        },
+        {
+          "mean": 0.32432279884815235,
+          "n": 20,
+          "quartile_low_to_high": 3,
+          "range": [
+            0.2778950929641733,
+            0.38958940505981254
+          ],
+          "success_rate": 0.2,
+          "successes": 4
+        },
+        {
+          "mean": 0.5804400444030736,
+          "n": 20,
+          "quartile_low_to_high": 4,
+          "range": [
+            0.39651191234588645,
+            1.0472650885581962
+          ],
+          "success_rate": 0.15,
+          "successes": 3
+        }
+      ],
+      "spearman": -0.6720627333333675,
+      "success_mean": 0.24864978404272142,
+      "success_median": 0.20772441625595134
+    },
+    "depth_rmse_clip_p95_episode": {
+      "auc_lower_predicts_success": 0.7575187969924813,
+      "failure_mean": 0.01588908671156356,
+      "failure_median": 0.015895670279860497,
+      "pearson": -0.4288393721735113,
+      "quartiles_low_to_high": [
+        {
+          "mean": 0.014121979614719749,
+          "n": 20,
+          "quartile_low_to_high": 1,
+          "range": [
+            0.013544010929763317,
+            0.014506079256534576
+          ],
+          "success_rate": 0.75,
+          "successes": 15
+        },
+        {
+          "mean": 0.014839394530281425,
+          "n": 20,
+          "quartile_low_to_high": 2,
+          "range": [
+            0.014518430456519127,
+            0.015115504153072834
+          ],
+          "success_rate": 0.8,
+          "successes": 16
+        },
+        {
+          "mean": 0.015661912458017468,
+          "n": 20,
+          "quartile_low_to_high": 3,
+          "range": [
+            0.015149001963436604,
+            0.01602870412170887
+          ],
+          "success_rate": 0.25,
+          "successes": 5
+        },
+        {
+          "mean": 0.016923884488642217,
+          "n": 20,
+          "quartile_low_to_high": 4,
+          "range": [
+            0.016035139560699463,
+            0.018250733613967896
+          ],
+          "success_rate": 0.3,
+          "successes": 6
+        }
+      ],
+      "spearman": -0.4455125538709905,
+      "success_mean": 0.014932336352233375,
+      "success_median": 0.014684915076941252
+    },
+    "depth_rmse_clip_p95_global": {
+      "auc_lower_predicts_success": 0.7161654135338346,
+      "failure_mean": 0.015547551092152534,
+      "failure_median": 0.015550895594060421,
+      "pearson": -0.3430270678397869,
+      "quartiles_low_to_high": [
+        {
+          "mean": 0.014720975421369076,
+          "n": 20,
+          "quartile_low_to_high": 1,
+          "range": [
+            0.014294203370809555,
+            0.014975217171013355
+          ],
+          "success_rate": 0.75,
+          "successes": 15
+        },
+        {
+          "mean": 0.015142824221402406,
+          "n": 20,
+          "quartile_low_to_high": 2,
+          "range": [
+            0.014999058097600937,
+            0.015265660360455513
+          ],
+          "success_rate": 0.7,
+          "successes": 14
+        },
+        {
+          "mean": 0.015488205570727586,
+          "n": 20,
+          "quartile_low_to_high": 3,
+          "range": [
+            0.015286032110452652,
+            0.015732666477560997
+          ],
+          "success_rate": 0.35,
+          "successes": 7
+        },
+        {
+          "mean": 0.0160778914578259,
+          "n": 20,
+          "quartile_low_to_high": 4,
+          "range": [
+            0.015759611502289772,
+            0.016533050686120987
+          ],
+          "success_rate": 0.3,
+          "successes": 6
+        }
+      ],
+      "spearman": -0.37397258352996693,
+      "success_mean": 0.015185499807731026,
+      "success_median": 0.015140863135457039
+    },
+    "depth_rmse_clip_p99_episode": {
+      "auc_lower_predicts_success": 0.8884711779448622,
+      "failure_mean": 0.05201608908215636,
+      "failure_median": 0.04571152292191982,
+      "pearson": -0.47592408951554127,
+      "quartiles_low_to_high": [
+        {
+          "mean": 0.026113000325858594,
+          "n": 20,
+          "quartile_low_to_high": 1,
+          "range": [
+            0.022760318592190742,
+            0.02867337316274643
+          ],
+          "success_rate": 1.0,
+          "successes": 20
+        },
+        {
+          "mean": 0.032117043249309064,
+          "n": 20,
+          "quartile_low_to_high": 2,
+          "range": [
+            0.02870028465986252,
+            0.03652836009860039
+          ],
+          "success_rate": 0.75,
+          "successes": 15
+        },
+        {
+          "mean": 0.04132415745407343,
+          "n": 20,
+          "quartile_low_to_high": 3,
+          "range": [
+            0.036655619740486145,
+            0.04852611944079399
+          ],
+          "success_rate": 0.2,
+          "successes": 4
+        },
+        {
+          "mean": 0.06896105352789164,
+          "n": 20,
+          "quartile_low_to_high": 4,
+          "range": [
+            0.048631880432367325,
+            0.11823878437280655
+          ],
+          "success_rate": 0.15,
+          "successes": 3
+        }
+      ],
+      "spearman": -0.6720627333333675,
+      "success_mean": 0.03318318347668364,
+      "success_median": 0.02873558457940817
+    },
+    "depth_rmse_clip_p99_global": {
+      "auc_lower_predicts_success": 0.8966165413533834,
+      "failure_mean": 0.04020402149150246,
+      "failure_median": 0.03989831916987896,
+      "pearson": -0.6620573367921487,
+      "quartiles_low_to_high": [
+        {
+          "mean": 0.03374400231987238,
+          "n": 20,
+          "quartile_low_to_high": 1,
+          "range": [
+            0.031900543719530106,
+            0.034904588013887405
+          ],
+          "success_rate": 1.0,
+          "successes": 20
+        },
+        {
+          "mean": 0.03601163700222969,
+          "n": 20,
+          "quartile_low_to_high": 2,
+          "range": [
+            0.03495264798402786,
+            0.037517793476581573
+          ],
+          "success_rate": 0.75,
+          "successes": 15
+        },
+        {
+          "mean": 0.03880819473415613,
+          "n": 20,
+          "quartile_low_to_high": 3,
+          "range": [
+            0.037747643887996674,
+            0.040082696825265884
+          ],
+          "success_rate": 0.2,
+          "successes": 4
+        },
+        {
+          "mean": 0.042593077197670935,
+          "n": 20,
+          "quartile_low_to_high": 4,
+          "range": [
+            0.040148112922906876,
+            0.045617472380399704
+          ],
+          "success_rate": 0.15,
+          "successes": 3
+        }
+      ],
+      "spearman": -0.6861543712903576,
+      "success_mean": 0.03560441448574975,
+      "success_median": 0.03496396914124489
+    },
+    "depth_rmse_original": {
+      "auc_lower_predicts_success": 0.33208020050125314,
+      "failure_mean": 6.99284062072597,
+      "failure_median": 5.91907793615419,
+      "pearson": 0.25514657965619153,
+      "quartiles_low_to_high": [
+        {
+          "mean": 1.7016841601320607,
+          "n": 20,
+          "quartile_low_to_high": 1,
+          "range": [
+            0.13136316157213532,
+            3.4220781178757695
+          ],
+          "success_rate": 0.3,
+          "successes": 6
+        },
+        {
+          "mean": 5.91817995039774,
+          "n": 20,
+          "quartile_low_to_high": 2,
+          "range": [
+            3.8064647398766924,
+            7.692010058256069
+          ],
+          "success_rate": 0.4,
+          "successes": 8
+        },
+        {
+          "mean": 9.95705087311845,
+          "n": 20,
+          "quartile_low_to_high": 3,
+          "range": [
+            7.705417863081528,
+            12.198378530247966
+          ],
+          "success_rate": 0.75,
+          "successes": 15
+        },
+        {
+          "mean": 17.323590213763957,
+          "n": 20,
+          "quartile_low_to_high": 4,
+          "range": [
+            12.584134163645407,
+            31.707354449180524
+          ],
+          "success_rate": 0.65,
+          "successes": 13
+        }
+      ],
+      "spearman": 0.2905045363441008,
+      "success_mean": 10.29243238953946,
+      "success_median": 9.884421197271575
+    }
+  },
+  "successes": 42
+}

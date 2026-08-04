@@ -1,0 +1,264 @@
+{
+  "episode_level": {
+    "metrics_vs_success": {
+      "artifact_jump_m": {
+        "failure_mean": 1.227518466791432,
+        "mean": 1.0114163247635588,
+        "pearson": -0.1152355309740399,
+        "spearman": -0.1690996554838796,
+        "success_mean": 0.8158953391192925
+      },
+      "decoded_frame_count": {
+        "failure_mean": 98.60526315789474,
+        "mean": 75.875,
+        "pearson": -0.9136987942580288,
+        "spearman": -0.8892838932094088,
+        "success_mean": 55.30952380952381
+      },
+      "depth_delta1": {
+        "failure_mean": 0.9888732325368602,
+        "mean": 0.9901744263163454,
+        "pearson": 0.6006317570239931,
+        "spearman": 0.6558031510753023,
+        "success_mean": 0.991351696878737
+      },
+      "depth_rmse_m": {
+        "failure_mean": 6.99284062072597,
+        "mean": 8.725126299353052,
+        "pearson": 0.25514657965619153,
+        "spearman": 0.2905045363441008,
+        "success_mean": 10.29243238953946
+      },
+      "entropy_score": {
+        "failure_mean": -0.18164756690951603,
+        "mean": 1.1102230246251566e-17,
+        "pearson": 0.2013581243832636,
+        "spearman": 0.2634052325806586,
+        "success_mean": 0.1643477986324193
+      },
+      "flow_epe_all_px": {
+        "failure_mean": 0.17132323254880152,
+        "mean": 0.15477199740707875,
+        "pearson": -0.4373147667303274,
+        "spearman": -0.4465965260215282,
+        "success_mean": 0.13979707037409148
+      },
+      "flow_epe_gt_nonzero_px": {
+        "failure_mean": 1.4560152226217271,
+        "mean": 1.354237361565311,
+        "pearson": -0.3782318157347404,
+        "spearman": -0.3858940855914175,
+        "success_mean": 1.2621526301333152
+      },
+      "flow_mean_px": {
+        "failure_mean": 0.47447946353962545,
+        "mean": 0.525089741870761,
+        "pearson": 0.3634904853224736,
+        "spearman": 0.3631306704301261,
+        "success_mean": 0.5708799936941692
+      },
+      "geometry_error_m": {
+        "failure_mean": 0.04287698168895746,
+        "mean": 0.04576161068398506,
+        "pearson": 0.08328936559520461,
+        "spearman": 0.11490104795699511,
+        "success_mean": 0.04837151310805764
+      },
+      "rgb_psnr": {
+        "failure_mean": 24.94095500752663,
+        "mean": 25.769342480875093,
+        "pearson": 0.7277485165695784,
+        "spearman": 0.7360170902150913,
+        "success_mean": 26.518835909142748
+      }
+    },
+    "rows": 80,
+    "success_rate": 0.525,
+    "successes": 42
+  },
+  "step_level": {
+    "metrics_vs_success_rate": {
+      "artifact_jump_m": {
+        "mean": 1.0114163247635588,
+        "pearson": -0.2576054109224982,
+        "spearman": -0.48197897496024894
+      },
+      "decoded_frame_count": {
+        "mean": 75.875,
+        "pearson": -0.9135100977223615,
+        "spearman": -0.9442278671275492
+      },
+      "depth_delta1": {
+        "mean": 0.9901744263163456,
+        "pearson": 0.567290580575589,
+        "spearman": 0.4058770315454729
+      },
+      "depth_rmse_m": {
+        "mean": 8.725126299353052,
+        "pearson": -0.526479192095635,
+        "spearman": -0.21562217300853245
+      },
+      "entropy_score": {
+        "mean": 1.769417945496343e-17,
+        "pearson": null,
+        "spearman": -0.4566116604886569
+      },
+      "flow_epe_all_px": {
+        "mean": 0.15477199740707875,
+        "pearson": -0.5181708244044928,
+        "spearman": -0.3424587453664927
+      },
+      "flow_epe_gt_nonzero_px": {
+        "mean": 1.354237361565311,
+        "pearson": -0.49539463450398225,
+        "spearman": -0.4058770315454729
+      },
+      "flow_mean_px": {
+        "mean": 0.525089741870761,
+        "pearson": 0.8445187676750524,
+        "spearman": 0.938590635448906
+      },
+      "geometry_error_m": {
+        "mean": 0.04576161068398506,
+        "pearson": 0.1837891699004213,
+        "spearman": 0.5834482328466172
+      },
+      "rgb_psnr": {
+        "mean": 25.76934248087509,
+        "pearson": 0.7368288020099028,
+        "spearman": 0.6849174907329854
+      }
+    },
+    "per_step": [
+      {
+        "artifact_jump_m": 1.0268690016120672,
+        "decoded_frame_count": 91.7,
+        "depth_delta1": 0.9874865595198902,
+        "depth_rmse_m": 12.289355357290095,
+        "entropy_score": 5.551115123125783e-17,
+        "episodes": 10,
+        "flow_epe_all_px": 0.18569323569536209,
+        "flow_epe_gt_nonzero_px": 1.6955092821231772,
+        "flow_mean_px": 0.46941467225551603,
+        "geometry_error_m": 0.04284151494503021,
+        "rgb_psnr": 24.697521048235206,
+        "step": 1000,
+        "success_rate": 0.3,
+        "successes": 3
+      },
+      {
+        "artifact_jump_m": 0.9847089808434248,
+        "decoded_frame_count": 70.1,
+        "depth_delta1": 0.9896727417852583,
+        "depth_rmse_m": 9.164617540724397,
+        "entropy_score": 4.4408920985006264e-17,
+        "episodes": 10,
+        "flow_epe_all_px": 0.16403586715459822,
+        "flow_epe_gt_nonzero_px": 1.4488647889569355,
+        "flow_mean_px": 0.5562061131000519,
+        "geometry_error_m": 0.05163425952196121,
+        "rgb_psnr": 25.626766965680833,
+        "step": 2000,
+        "success_rate": 0.6,
+        "successes": 6
+      },
+      {
+        "artifact_jump_m": 0.8403502505272626,
+        "decoded_frame_count": 70.6,
+        "depth_delta1": 0.9902252118823343,
+        "depth_rmse_m": 7.933844906002896,
+        "entropy_score": -2.0539125955565397e-16,
+        "episodes": 10,
+        "flow_epe_all_px": 0.17129234820604325,
+        "flow_epe_gt_nonzero_px": 1.4864279519709638,
+        "flow_mean_px": 0.551106932759285,
+        "geometry_error_m": 0.044623268954455855,
+        "rgb_psnr": 25.76896352841441,
+        "step": 3000,
+        "success_rate": 0.5,
+        "successes": 5
+      },
+      {
+        "artifact_jump_m": 0.5531862378120422,
+        "decoded_frame_count": 75.4,
+        "depth_delta1": 0.9906989784234963,
+        "depth_rmse_m": 9.572985845334145,
+        "entropy_score": -1.9984014443252818e-16,
+        "episodes": 10,
+        "flow_epe_all_px": 0.14810488149523734,
+        "flow_epe_gt_nonzero_px": 1.2425694722358283,
+        "flow_mean_px": 0.5135669350624085,
+        "geometry_error_m": 0.038798237405717376,
+        "rgb_psnr": 25.996591449363404,
+        "step": 4000,
+        "success_rate": 0.5,
+        "successes": 5
+      },
+      {
+        "artifact_jump_m": 0.9727324804291129,
+        "decoded_frame_count": 75.4,
+        "depth_delta1": 0.9903878842655708,
+        "depth_rmse_m": 7.776193519418189,
+        "entropy_score": 1.582067810090848e-16,
+        "episodes": 10,
+        "flow_epe_all_px": 0.15117005109786988,
+        "flow_epe_gt_nonzero_px": 1.3073441227372011,
+        "flow_mean_px": 0.5213418424129486,
+        "geometry_error_m": 0.0447352010756731,
+        "rgb_psnr": 25.844441845296366,
+        "step": 5000,
+        "success_rate": 0.5,
+        "successes": 5
+      },
+      {
+        "artifact_jump_m": 0.6865438651293516,
+        "decoded_frame_count": 61.6,
+        "depth_delta1": 0.9911175096933341,
+        "depth_rmse_m": 7.347084856710926,
+        "entropy_score": 5.551115123125783e-18,
+        "episodes": 10,
+        "flow_epe_all_px": 0.13783931061625482,
+        "flow_epe_gt_nonzero_px": 1.2123151427540422,
+        "flow_mean_px": 0.5673830807209015,
+        "geometry_error_m": 0.04500894211232662,
+        "rgb_psnr": 26.402512698003697,
+        "step": 6000,
+        "success_rate": 0.9,
+        "successes": 9
+      },
+      {
+        "artifact_jump_m": 1.998910743370652,
+        "decoded_frame_count": 78.1,
+        "depth_delta1": 0.9914320091179215,
+        "depth_rmse_m": 8.47044355189063,
+        "entropy_score": 2.2204460492503132e-17,
+        "episodes": 10,
+        "flow_epe_all_px": 0.13323161676526069,
+        "flow_epe_gt_nonzero_px": 1.1664259642868964,
+        "flow_mean_px": 0.5156867414712906,
+        "geometry_error_m": 0.058660995215177536,
+        "rgb_psnr": 26.285373821562835,
+        "step": 7000,
+        "success_rate": 0.5,
+        "successes": 5
+      },
+      {
+        "artifact_jump_m": 1.0280290383845567,
+        "decoded_frame_count": 84.1,
+        "depth_delta1": 0.9903745158429592,
+        "depth_rmse_m": 7.246484817453139,
+        "entropy_score": 2.609024107869118e-16,
+        "episodes": 10,
+        "flow_epe_all_px": 0.14680866822600364,
+        "flow_epe_gt_nonzero_px": 1.2744421674574424,
+        "flow_mean_px": 0.5060116171836853,
+        "geometry_error_m": 0.03979046624153852,
+        "rgb_psnr": 25.532568490443985,
+        "step": 8000,
+        "success_rate": 0.4,
+        "successes": 4
+      }
+    ],
+    "rows": 8
+  }
+}
