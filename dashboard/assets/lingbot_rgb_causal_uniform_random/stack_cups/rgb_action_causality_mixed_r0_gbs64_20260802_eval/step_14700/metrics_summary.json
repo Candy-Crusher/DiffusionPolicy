@@ -1,0 +1,73 @@
+{
+  "episodes": 10,
+  "metrics": {
+    "decoded_frame_count": 87.1,
+    "rgb_psnr": 24.83441524479329
+  },
+  "per_seed": [
+    {
+      "decoded_frame_count": 54,
+      "rgb_psnr": 25.859305328448414,
+      "seed": 930000,
+      "success": true
+    },
+    {
+      "decoded_frame_count": 101,
+      "rgb_psnr": 23.82194403348598,
+      "seed": 930001,
+      "success": false
+    },
+    {
+      "decoded_frame_count": 101,
+      "rgb_psnr": 25.33098664018216,
+      "seed": 930002,
+      "success": false
+    },
+    {
+      "decoded_frame_count": 101,
+      "rgb_psnr": 24.80907207063743,
+      "seed": 930003,
+      "success": false
+    },
+    {
+      "decoded_frame_count": 101,
+      "rgb_psnr": 23.16302198918558,
+      "seed": 930004,
+      "success": false
+    },
+    {
+      "decoded_frame_count": 54,
+      "rgb_psnr": 26.187746656524627,
+      "seed": 930005,
+      "success": true
+    },
+    {
+      "decoded_frame_count": 56,
+      "rgb_psnr": 25.521110459870652,
+      "seed": 930006,
+      "success": true
+    },
+    {
+      "decoded_frame_count": 101,
+      "rgb_psnr": 23.47749156175088,
+      "seed": 930007,
+      "success": false
+    },
+    {
+      "decoded_frame_count": 101,
+      "rgb_psnr": 25.208435686804876,
+      "seed": 930008,
+      "success": false
+    },
+    {
+      "decoded_frame_count": 101,
+      "rgb_psnr": 24.96503802104231,
+      "seed": 930009,
+      "success": false
+    }
+  ],
+  "seed_end": 930009,
+  "seed_start": 930000,
+  "success_rate": 0.3,
+  "successes": 3
+}

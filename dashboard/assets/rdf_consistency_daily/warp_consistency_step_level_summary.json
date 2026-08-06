@@ -1,0 +1,130 @@
+{
+  "metrics": {
+    "depth_improvement": {
+      "pearson_vs_step_flow_epe": -0.11239806596794266,
+      "pearson_vs_success_rate": 0.5779973647919133,
+      "spearman_vs_step_flow_epe": -0.07142857142857144,
+      "spearman_vs_success_rate": 0.3805097170738808
+    },
+    "depth_warp_mae": {
+      "pearson_vs_step_flow_epe": 0.14994203859757116,
+      "pearson_vs_success_rate": -0.4004217689965132,
+      "spearman_vs_step_flow_epe": 0.11904761904761905,
+      "spearman_vs_success_rate": -0.22830583024432846
+    },
+    "depth_warp_over_no_warp": {
+      "pearson_vs_step_flow_epe": 0.07318986932476723,
+      "pearson_vs_success_rate": -0.5244936081075796,
+      "spearman_vs_step_flow_epe": 0.023809523809523815,
+      "spearman_vs_success_rate": -0.3805097170738808
+    },
+    "rgb_improvement": {
+      "pearson_vs_step_flow_epe": -0.702183075162106,
+      "pearson_vs_success_rate": 0.7482092339479123,
+      "spearman_vs_step_flow_epe": -0.4285714285714286,
+      "spearman_vs_success_rate": 0.494662632196045
+    },
+    "rgb_warp_mae": {
+      "pearson_vs_step_flow_epe": 0.7900650210543656,
+      "pearson_vs_success_rate": 0.017143921984825616,
+      "spearman_vs_step_flow_epe": 0.7619047619047621,
+      "spearman_vs_success_rate": 0.16488754406534833
+    },
+    "rgb_warp_over_no_warp": {
+      "pearson_vs_step_flow_epe": 0.8799873229379784,
+      "pearson_vs_success_rate": -0.6006441564993774,
+      "spearman_vs_step_flow_epe": 0.880952380952381,
+      "spearman_vs_success_rate": -0.494662632196045
+    }
+  },
+  "per_step": [
+    {
+      "depth_improvement": -0.0022472122065109452,
+      "depth_warp_mae": 0.04094015243923978,
+      "depth_warp_over_no_warp": 1.0274220550591886,
+      "flow_epe_all_px": 0.18569323569536209,
+      "rgb_improvement": 0.004193498931765341,
+      "rgb_warp_mae": 0.013853035869614509,
+      "rgb_warp_over_no_warp": 0.7735283330852665,
+      "step": 1000,
+      "success_rate": 0.3
+    },
+    {
+      "depth_improvement": 0.00848202134225399,
+      "depth_warp_mae": 0.03377150704016084,
+      "depth_warp_over_no_warp": 0.7911960593731948,
+      "flow_epe_all_px": 0.16403586715459822,
+      "rgb_improvement": 0.004828437075387948,
+      "rgb_warp_mae": 0.013987853812061912,
+      "rgb_warp_over_no_warp": 0.7478963907957319,
+      "step": 2000,
+      "success_rate": 0.6
+    },
+    {
+      "depth_improvement": 0.0039425053616653155,
+      "depth_warp_mae": 0.03790987286283876,
+      "depth_warp_over_no_warp": 0.9353579278779101,
+      "flow_epe_all_px": 0.17129234820604325,
+      "rgb_improvement": 0.00503867083512754,
+      "rgb_warp_mae": 0.013998060784008667,
+      "rgb_warp_over_no_warp": 0.7378684841118635,
+      "step": 3000,
+      "success_rate": 0.5
+    },
+    {
+      "depth_improvement": 0.001667252281520669,
+      "depth_warp_mae": 0.03688671249701182,
+      "depth_warp_over_no_warp": 1.0277778652512903,
+      "flow_epe_all_px": 0.14810488149523734,
+      "rgb_improvement": 0.004860370552057721,
+      "rgb_warp_mae": 0.013062566423153944,
+      "rgb_warp_over_no_warp": 0.7298542628827931,
+      "step": 4000,
+      "success_rate": 0.5
+    },
+    {
+      "depth_improvement": -0.0026052250312316133,
+      "depth_warp_mae": 0.04254989656694012,
+      "depth_warp_over_no_warp": 1.0138738249038175,
+      "flow_epe_all_px": 0.15117005109786988,
+      "rgb_improvement": 0.004977696114108454,
+      "rgb_warp_mae": 0.013453454652436293,
+      "rgb_warp_over_no_warp": 0.7320398728225588,
+      "step": 5000,
+      "success_rate": 0.5
+    },
+    {
+      "depth_improvement": 0.011186093057214486,
+      "depth_warp_mae": 0.03114085282666824,
+      "depth_warp_over_no_warp": 0.7399851306879969,
+      "flow_epe_all_px": 0.13783931061625482,
+      "rgb_improvement": 0.005227319759832398,
+      "rgb_warp_mae": 0.013512682861724199,
+      "rgb_warp_over_no_warp": 0.7227725295251777,
+      "step": 6000,
+      "success_rate": 0.9
+    },
+    {
+      "depth_improvement": -0.004816982262770221,
+      "depth_warp_mae": 0.043981765142077606,
+      "depth_warp_over_no_warp": 1.1197520270654995,
+      "flow_epe_all_px": 0.13323161676526069,
+      "rgb_improvement": 0.004925381090320509,
+      "rgb_warp_mae": 0.013050465319455782,
+      "rgb_warp_over_no_warp": 0.7297768069096765,
+      "step": 7000,
+      "success_rate": 0.5
+    },
+    {
+      "depth_improvement": 0.008869995512231884,
+      "depth_warp_mae": 0.028987350046893588,
+      "depth_warp_over_no_warp": 0.7655313339358951,
+      "flow_epe_all_px": 0.14680866822600364,
+      "rgb_improvement": 0.004867254930540849,
+      "rgb_warp_mae": 0.013216151662797193,
+      "rgb_warp_over_no_warp": 0.7329591506740422,
+      "step": 8000,
+      "success_rate": 0.4
+    }
+  ]
+}
